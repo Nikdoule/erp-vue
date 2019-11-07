@@ -7,11 +7,17 @@
 
 require('./bootstrap');
 
+
+
 window.Vue = require('vue');
 import BootstrapVue from 'bootstrap-vue'
-
 Vue.use(BootstrapVue)
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import Chartkick from 'vue-chartkick'
+import Chart from 'chart.js'
+Vue.use(Chartkick.use(Chart))
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

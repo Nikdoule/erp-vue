@@ -69,6 +69,7 @@
             @yield('content')
             @yield('create')
             @yield('developper')
+            @yield('graphical')
         </main>
     </div>
     <script src="https://kit.fontawesome.com/536fe6e8c5.js" crossorigin="anonymous"></script>

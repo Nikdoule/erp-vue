@@ -12,6 +12,10 @@
         <i class="fas fa-user-tie m-auto"></i>
         <span class="span-item">Business développeur</span>
     </a>
+    <a id="home" href="/monitoring-graphical" class="d-flex a-item">
+        <i class="fas fa-user-tie m-auto"></i>
+        <span class="span-item">Monitory Graphical</span>
+    </a>
 </Slide>
 </template>
 

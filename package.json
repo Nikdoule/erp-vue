@@ -25,6 +25,8 @@
     },
     "dependencies": {
         "bootstrap-vue": "^2.0.4",
+        "gulp": "^4.0.2",
+        "hchs-vue-charts": "^1.2.8",
         "vue-burger-menu": "^2.0.3"
     }
 }
