@@ -53330,7 +53330,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.fas {\r\n    color: white;\n}\n.bm-item-list {\r\n    margin: 0 !important;\n}\n.a-item {\r\n    width: 300px;\r\n    height: 100px;\n}\n.a-item:hover {\r\n    background-color: rgb(49, 96, 158);\n}\n.span-item {\r\n    margin: auto;\r\n    width: 200px;\n}\n.bm-burger-button {\r\n    position: fixed;\r\n    width: 36px;\r\n    height: 30px;\r\n    left: 36px;\r\n    top: 15px;\r\n    cursor: pointer;\n}\n.bm-burger-bars {\r\n    background-color: #1e47ff;\n}\n.line-style {\r\n    position: absolute;\r\n    height: 20%;\r\n    left: 0;\r\n    right: 0;\n}\n.cross-style {\r\n    position: absolute;\r\n    top: 12px;\r\n    right: 2px;\r\n    cursor: pointer;\n}\n.bm-cross {\r\n    background: #bdc3c7;\n}\n.bm-cross-button {\r\n    height: 24px;\r\n    width: 24px;\n}\n.bm-menu {\r\n    height: 100%;\r\n    /* 100% Full-height */\r\n    width: 0;\r\n    /* 0 width - change this with JavaScript */\r\n    position: fixed;\r\n    /* Stay in place */\r\n    z-index: 1000;\r\n    /* Stay on top */\r\n    top: 0;\r\n    left: 0;\r\n    background-color: rgb(21, 45, 77);\r\n    /* Black*/\r\n    overflow-x: hidden;\r\n    /* Disable horizontal scroll */\r\n    padding-top: 60px;\r\n    /* Place content 60px from the top */\r\n    -webkit-transition: 0.5s;\r\n    transition: 0.5s;\r\n    /*0.5 second transition effect to slide in the sidenav*/\n}\n.bm-overlay {\r\n    background: rgba(0, 0, 0, 0.3);\n}\n.bm-item-list {\r\n    color: #b8b7ad;\r\n    margin-left: 10%;\r\n    font-size: 20px;\n}\n.bm-item-list>* {\r\n    display: -webkit-box;\r\n    display: flex;\r\n    text-decoration: none;\r\n    padding: 0.7em;\n}\n.bm-item-list>*>span {\r\n    margin-left: 10px;\r\n    font-weight: 700;\r\n    color: white;\n}\r\n", ""]);
+exports.push([module.i, "\n.fas {\n    color: white;\n}\n.bm-item-list {\n    margin: 0 !important;\n}\n.a-item {\n    width: 200px;\n    height: 100px;\n}\n.a-item:hover {\n    background-color: rgb(49, 96, 158);\n}\n.span-item {\n    margin: auto;\n    width: 200px;\n    font-size: 0.9rem;\n}\n.bm-burger-button {\n    position: fixed;\n    width: 36px;\n    height: 30px;\n    left: 36px;\n    top: 15px;\n    cursor: pointer;\n}\n.bm-burger-bars {\n    background-color: #1e47ff;\n}\n.line-style {\n    position: absolute;\n    height: 20%;\n    left: 0;\n    right: 0;\n}\n.cross-style {\n    position: absolute;\n    top: 12px;\n    right: 2px;\n    cursor: pointer;\n}\n.bm-cross {\n    background: #bdc3c7;\n}\n.bm-cross-button {\n    height: 24px;\n    width: 24px;\n}\n.bm-menu {\n    height: 100%;\n    /* 100% Full-height */\n    width: 0;\n    /* 0 width - change this with JavaScript */\n    position: fixed;\n    /* Stay in place */\n    z-index: 1000;\n    /* Stay on top */\n    top: 0;\n    left: 0;\n    background-color: rgb(21, 45, 77);\n    /* Black*/\n    overflow-x: hidden;\n    /* Disable horizontal scroll */\n    padding-top: 60px;\n    /* Place content 60px from the top */\n    -webkit-transition: 0.5s;\n    transition: 0.5s;\n    /*0.5 second transition effect to slide in the sidenav*/\n    box-shadow: 3px 0px 3px rgb(0, 0, 0);\n}\n.bm-overlay {\n    background: rgba(0, 0, 0, 0.3);\n}\n.bm-item-list {\n    color: #b8b7ad;\n    margin-left: 10%;\n    font-size: 20px;\n}\n.bm-item-list>* {\n    display: -webkit-box;\n    display: flex;\n    text-decoration: none;\n    padding: 0.7em;\n}\n.bm-item-list>*>span {\n    margin-left: 10px;\n    font-weight: 700;\n    color: white;\n}\n", ""]);
 
 // exports
 
@@ -53874,19 +53874,9 @@ module.exports = supportsStandardArguments ? isStandardArguments : isLegacyArgum
  * @license  MIT
  */
 
-// The _isBuffer check is for Safari 5-7 support, because it's missing
-// Object.prototype.constructor. Remove this eventually
-module.exports = function (obj) {
-  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
-}
-
-function isBuffer (obj) {
-  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
-}
-
-// For Node v0.10 support. Remove this eventually.
-function isSlowBuffer (obj) {
-  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
+module.exports = function isBuffer (obj) {
+  return obj != null && obj.constructor != null &&
+    typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
 }
 
 
@@ -106140,7 +106130,7 @@ var es7_promise_finally = __webpack_require__("097d");
     width: {
       type: [String],
       required: false,
-      default: '300'
+      default: '200'
     },
     disableEsc: {
       type: Boolean,
@@ -107928,7 +107918,9 @@ var render = function() {
       "a",
       { staticClass: "d-flex a-item", attrs: { id: "home", href: "/" } },
       [
-        _c("i", { staticClass: "fas fa-business-time m-auto" }),
+        _c("i", {
+          staticClass: "fas fa-business-time ml-auto mt-auto mb-auto"
+        }),
         _vm._v(" "),
         _c("span", { staticClass: "span-item" }, [
           _vm._v("Mon suivi commercial")
@@ -107943,7 +107935,7 @@ var render = function() {
         attrs: { id: "home", href: "/create-entity" }
       },
       [
-        _c("i", { staticClass: "fas fa-users m-auto" }),
+        _c("i", { staticClass: "fas fa-users ml-auto mt-auto mb-auto" }),
         _vm._v(" "),
         _c("span", { staticClass: "span-item" }, [_vm._v("Créér une entité")])
       ]
@@ -107956,7 +107948,7 @@ var render = function() {
         attrs: { id: "home", href: "/business-developper" }
       },
       [
-        _c("i", { staticClass: "fas fa-user-tie m-auto" }),
+        _c("i", { staticClass: "fas fa-user-tie ml-auto mt-auto mb-auto" }),
         _vm._v(" "),
         _c("span", { staticClass: "span-item" }, [
           _vm._v("Business développeur")
@@ -107971,7 +107963,7 @@ var render = function() {
         attrs: { id: "home", href: "/monitoring-graphical" }
       },
       [
-        _c("i", { staticClass: "fas fa-user-tie m-auto" }),
+        _c("i", { staticClass: "fas fa-chart-line ml-auto mt-auto mb-auto" }),
         _vm._v(" "),
         _c("span", { staticClass: "span-item" }, [_vm._v("Monitory Graphical")])
       ]
@@ -120566,8 +120558,8 @@ component.options.__file = "resources/js/components/suivi-graphique/Suivi.vue"
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\francois\Desktop\laravel\erp\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\francois\Desktop\laravel\erp\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/popschool/projects/Laravel/erp-vue/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/popschool/projects/Laravel/erp-vue/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

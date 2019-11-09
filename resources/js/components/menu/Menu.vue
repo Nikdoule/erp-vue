@@ -1,19 +1,19 @@
 <template>
 <Slide>
     <a id="home" href="/" class="d-flex a-item">
-        <i class="fas fa-business-time m-auto"></i>
+        <i class="fas fa-business-time ml-auto mt-auto mb-auto"></i>
         <span class="span-item">Mon suivi commercial</span>
     </a>
     <a id="home" href="/create-entity" class="d-flex a-item">
-        <i class="fas fa-users m-auto"></i>
+        <i class="fas fa-users ml-auto mt-auto mb-auto"></i>
         <span class="span-item">Créér une entité</span>
     </a>
     <a id="home" href="/business-developper" class="d-flex a-item">
-        <i class="fas fa-user-tie m-auto"></i>
+        <i class="fas fa-user-tie ml-auto mt-auto mb-auto"></i>
         <span class="span-item">Business développeur</span>
     </a>
     <a id="home" href="/monitoring-graphical" class="d-flex a-item">
-        <i class="fas fa-user-tie m-auto"></i>
+        <i class="fas fa-chart-line ml-auto mt-auto mb-auto"></i>
         <span class="span-item">Monitory Graphical</span>
     </a>
 </Slide>
@@ -42,7 +42,7 @@ export default {
 }
 
 .a-item {
-    width: 300px;
+    width: 200px;
     height: 100px;
 }
 
@@ -53,6 +53,7 @@ export default {
 .span-item {
     margin: auto;
     width: 200px;
+    font-size: 0.9rem;
 }
 
 .bm-burger-button {
@@ -110,6 +111,7 @@ export default {
     /* Place content 60px from the top */
     transition: 0.5s;
     /*0.5 second transition effect to slide in the sidenav*/
+    box-shadow: 3px 0px 3px rgb(0, 0, 0);
 }
 
 .bm-overlay {
