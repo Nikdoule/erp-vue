@@ -1,0 +1,113 @@
+.fas {
+    color: rgba(255, 255, 255, 0.767);
+    margin-right: 8px;
+}
+
+.bm-item-list {
+    margin: 0 !important;
+
+}
+a{
+    text-decoration: none !important;
+}
+.a-item, .li-item{
+    margin: auto;
+    width: 260px;
+    height: 65px;
+    text-decoration: none !important;
+    color:white;
+}
+
+.a-item:hover {
+    color: white;
+    background-color: rgba(210, 218, 230, 0.281);
+
+}
+
+.span-item {
+    margin: auto;
+    width: 260px;
+    font-size: 1rem !important;
+}
+
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 14px !important;
+    cursor: pointer;
+}
+
+.bm-burger-bars {
+    background-color: $blue !important;
+}
+
+.line-style {
+    position: absolute;
+    height: 20%;
+    left: 0;
+    right: 0;
+}
+
+.cross-style {
+    position: absolute;
+    top: 12px;
+    right: 2px;
+    cursor: pointer;
+}
+
+.bm-cross {
+    background: #bdc3c7;
+}
+
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+}
+
+.bm-menu {
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1000;
+    /* Stay on top */
+    top: 0;
+    left: 0;
+    background-image: url("../../../../public/img/nav-bar.jpg");
+    background-color: rgb(21, 45, 77);
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /*0.5 second transition effect to slide in the sidenav*/
+    box-shadow: 2px 0px 10px rgb(0, 0, 0);
+}
+
+.bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.bm-item-list {
+    color: #ffffff !important;
+    margin-left: 10%;
+    
+
+}
+
+.bm-item-list>* {
+    display: flex;
+    text-decoration: none;
+    padding: 0 !important;
+}
+
+.bm-item-list>*>span {
+    margin-left: 10px;
+    font-weight: 700;
+    color: rgb(255, 255, 255, 0.767);
+}

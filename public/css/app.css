@@ -1,5 +1,147 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+html {
+  background-color: #eeee;
+}
+
+.coolGrenn {
+  background: #bbe1bd;
+}
+
+.coolRed {
+  background: #fccac7;
+}
+
+body {
+  box-sizing: content-box;
+}
+
+.fas {
+  color: rgba(255, 255, 255, 0.767);
+  margin-right: 8px;
+}
+
+.bm-item-list {
+  margin: 0 !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.a-item,
+.li-item {
+  margin: auto;
+  width: 260px;
+  height: 65px;
+  text-decoration: none !important;
+  color: white;
+}
+
+.a-item:hover {
+  color: white;
+  background-color: rgba(210, 218, 230, 0.281);
+}
+
+.span-item {
+  margin: auto;
+  width: 260px;
+  font-size: 1rem !important;
+}
+
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 14px !important;
+  cursor: pointer;
+}
+
+.bm-burger-bars {
+  background-color: #3490dc !important;
+}
+
+.line-style {
+  position: absolute;
+  height: 20%;
+  left: 0;
+  right: 0;
+}
+
+.cross-style {
+  position: absolute;
+  top: 12px;
+  right: 2px;
+  cursor: pointer;
+}
+
+.bm-cross {
+  background: #bdc3c7;
+}
+
+.bm-cross-button {
+  height: 24px;
+  width: 24px;
+}
+
+.bm-menu {
+  height: 100%;
+  /* 100% Full-height */
+  width: 0;
+  /* 0 width - change this with JavaScript */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1000;
+  /* Stay on top */
+  top: 0;
+  left: 0;
+  background-image: url(/images/nav-bar.jpg?85c5c1c14c23442aa3f1288569ac89fb);
+  background-color: #152d4d;
+  /* Black*/
+  overflow-x: hidden;
+  /* Disable horizontal scroll */
+  padding-top: 60px;
+  /* Place content 60px from the top */
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  /*0.5 second transition effect to slide in the sidenav*/
+  box-shadow: 2px 0px 10px black;
+}
+
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.bm-item-list {
+  color: #ffffff !important;
+  margin-left: 10%;
+}
+
+.bm-item-list > * {
+  display: -webkit-box;
+  display: flex;
+  text-decoration: none;
+  padding: 0 !important;
+}
+
+.bm-item-list > * > span {
+  margin-left: 10px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.767);
+}
+
+.table-radius {
+  box-shadow: 2px 0px 20px #c4c4c4;
+  border-radius: 10px;
+  background-color: #ffff;
+}
+
+.form-shadow {
+  box-shadow: 2px 0px 20px #c4c4c4;
+  padding: 20px;
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -72,7 +214,7 @@ body {
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  background-color: #eeee;
 }
 
 [tabindex="-1"]:focus {
@@ -517,7 +659,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #f8fafc;
+  background-color: #eeee;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -4293,15 +4435,15 @@ input[type=button].btn-block {
 }
 
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #eeee, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #eeee, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #eeee, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range::-moz-focus-outer {
@@ -4510,8 +4652,8 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #f8fafc;
-  border-color: #dee2e6 #dee2e6 #f8fafc;
+  background-color: #eeee;
+  border-color: #dee2e6 #dee2e6 #eeee;
 }
 
 .nav-tabs .dropdown-menu {

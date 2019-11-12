@@ -29,11 +29,22 @@ Vue.use(Chartkick.use(Chart))
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('business-view', require('./components/business-view/Business.vue').default);
-Vue.component('create-entity', require('./components/create-entity/Create.vue').default);
+
+//view
+Vue.component('business-view', require('./components/view/Business.vue').default);
+Vue.component('case-view', require('./components/view/case.vue').default);
+Vue.component('business-dev', require('./components/view/Developper.vue').default);
+Vue.component('contact-view', require('./components/view/Contact.vue').default);
+Vue.component('data-view', require('./components/data/Data.vue').default);
+//create
+Vue.component('create-business-developper', require('./components/create/BusinessDevelopper.vue').default);
+Vue.component('create-case', require('./components/create/Case.vue').default);
+Vue.component('create-contact', require('./components/create/Contact.vue').default);
+//menu
 Vue.component('menu-vertical', require('./components/menu/Menu.vue').default);
-Vue.component('business-dev', require('./components/business-developper/Developper.vue').default);
-Vue.component('suivi-graphique', require('./components/suivi-graphique/Suivi.vue').default);
+
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

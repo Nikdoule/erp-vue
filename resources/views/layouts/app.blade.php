@@ -67,9 +67,14 @@
         </nav>
         <main class="col-12 ml-auto mr-auto">
             @yield('content')
-            @yield('create')
-            @yield('developper')
-            @yield('graphical')
+            @yield('create-developper')
+            @yield('developper-view')
+            @yield('graphical-view')
+            @yield('count')
+            @yield('create-case')
+            @yield('view-case')
+            @yield('create-contact')
+            @yield('view-contact')
         </main>
     </div>
     <script src="https://kit.fontawesome.com/536fe6e8c5.js" crossorigin="anonymous"></script>

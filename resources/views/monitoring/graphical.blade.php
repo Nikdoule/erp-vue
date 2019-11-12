@@ -1,6 +1,20 @@
 @extends('layouts.app')
-@section('graphical')
+@section('graphical-view')
 <section>
-    <line-chart :data="{'2019-01-01': 0, '2019-01-02': 1, '2019-01-03': 2, '2019-01-04': 3, '2019-01-05': 2, '2019-01-06': 5}"></line-chart>
+    <data-view></data-view>
 </section>
+<div class="d-flex ">
+    <section class="col-4">
+        <line-chart :data="{'2019-01-01': 5, '2019-02-01': 10, '2019-03-01': 8, '2019-04-01': 5, '2019-05-01': 13}">
+        </line-chart>
+    </section>
+    <section class="col-4">
+        <line-chart :data="{'2019-01-01': 5, '2019-02-01': 10, '2019-03-01': 8, '2019-04-01': 5, '2019-05-01': 13}">
+        </line-chart>
+    </section>
+    <section class="col-4">
+        <line-chart :data="{'2019-01-01': 5, '2019-02-01': 10, '2019-03-01': 8, '2019-04-01': 5, '2019-05-01': 13}">
+        </line-chart>
+    </section>
+</div>
 @endsection
