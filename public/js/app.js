@@ -1850,126 +1850,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       csrf: "",
       form: {
-        email: '',
-        last_name: '',
-        first_name: '',
-        naf: '',
-        company: '',
-        siret: '',
-        kbis: '',
-        country: '',
-        adress: '',
-        zip: '',
-        city: '',
-        language: '',
-        money: '',
-        timeZone: '',
-        title: '',
-        statut: ''
+        projects: ''
       },
-      show: true,
-      selected: [],
-      // Must be an array reference!
-      options: [{
-        text: 'Prospect',
-        value: 'Prospect'
-      }, {
-        text: 'Client',
-        value: 'Client'
-      }, {
-        text: 'Commercial',
-        value: 'Commercial' //disabled: true
-
-      }]
+      show: true
     };
   },
   methods: {
     onSubmit: function onSubmit(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form));
+      alert(JSON.stringify(this.form.projects));
+      axios.post('/api/1.0/projects', {
+        name: this.form.projects
+      });
     },
     onReset: function onReset(evt) {
       var _this = this;
 
       evt.preventDefault(); // Reset our form values
 
-      this.form.email = '';
-      this.form.last_name = '';
-      this.form.first_name = '';
-      this.form.naf = '';
-      this.form.statut = '';
-      this.form.title = '';
-      this.form.kbis = '';
-      this.form.mark = '';
-      this.form.company = '';
-      this.form.siret = '';
-      this.form.adress = '';
-      this.form.zip = '';
-      this.form.city = '';
-      this.form.language = '';
-      this.form.money = '';
-      this.form.timeZone = ''; // Trick to reset/clear native browser form validation state
-
+      this.form.projetcs = '';
       this.show = false;
       this.$nextTick(function () {
         _this.show = true;
       });
     }
-  },
-  mounted: function mounted() {
-    this.csrf = window.laravel.csrfToken;
   }
 });
 
@@ -2144,14 +2053,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      csrf: "",
       form: {
         email: '',
         last_name: '',
@@ -2162,34 +2066,38 @@ __webpack_require__.r(__webpack_exports__);
         kbis: '',
         country: '',
         adress: '',
-        zip: '',
+        zip_code: '',
         city: '',
         language: '',
-        money: '',
-        timeZone: '',
         title: '',
-        statut: ''
+        mark: ''
       },
       show: true,
-      selected: [],
-      // Must be an array reference!
-      options: [{
-        text: 'Prospect',
-        value: 'Prospect'
-      }, {
-        text: 'Client',
-        value: 'Client'
-      }, {
-        text: 'Commercial',
-        value: 'Commercial' //disabled: true
+      selected: [] // Must be an array reference!
 
-      }]
     };
   },
   methods: {
     onSubmit: function onSubmit(evt) {
       evt.preventDefault();
       alert(JSON.stringify(this.form));
+      axios.post('/api/1.0/contacts', {
+        language: this.form.language,
+        phone: this.form.phone,
+        last_name: this.form.last_name,
+        first_name: this.form.first_name,
+        title: this.form.title,
+        naf: this.form.naf,
+        company: this.form.company,
+        siret: this.form.siret,
+        kbis: this.form.kbis,
+        country: this.form.country,
+        adress: this.form.adress,
+        zip_code: this.form.zip_code,
+        city: this.form.city,
+        email: this.form.email,
+        mark: this.form.mark
+      });
     },
     onReset: function onReset(evt) {
       var _this = this;
@@ -2209,9 +2117,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form.adress = '';
       this.form.zip = '';
       this.form.city = '';
-      this.form.language = '';
-      this.form.money = '';
-      this.form.timeZone = ''; // Trick to reset/clear native browser form validation state
+      this.form.language = ''; // Trick to reset/clear native browser form validation state
 
       this.show = false;
       this.$nextTick(function () {
@@ -2616,89 +2522,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["contacts"],
   data: function data() {
     return {
-      modes: ['multi', 'single', 'range'],
-      fields: ['Name_Mark_Dénomination', 'Email', 'Phone', 'Entity', 'Adress', 'Zip_Code', 'City', 'Naf', 'Siret', 'KBIS', 'Country', 'Language', 'Money', 'Time_Zone', 'Title', 'Last_name', 'First_name', 'Statut'],
-      items: [{
-        Name_Mark_Dénomination: 'Françis Durant/ Bloking /Général constructor',
-        Email: 'Françis@gmail.com',
-        Phone: '07-81-11-31-67',
-        Entity: 'Blocking',
-        Adress: '27 rue du 4 septembre',
-        Zip_Code: '62800',
-        City: 'Lievin',
-        Naf: '4051c',
-        Siret: '12345678',
-        KBIS: 'présent',
-        Country: 'France',
-        Language: 'Française',
-        Money: 'Euro',
-        Time_Zone: 'GMT+1',
-        Title: 'Monsieur',
-        Last_name: 'Paul',
-        First_name: 'Staelen',
-        Statut: 'Client'
-      }, {
-        Name_Mark_Dénomination: 'Guy Staellen/ Strat /Général constructor',
-        Email: 'jean@gmail.com',
-        Phone: '07-81-11-31-67',
-        Entity: 'Blocking',
-        Adress: '14 rue du 4 septembre',
-        Zip_Code: '62800',
-        City: 'Lievin',
-        Naf: '4051c',
-        Siret: '12345678',
-        KBIS: 'présent',
-        Country: 'France',
-        Language: 'Française',
-        Money: 'Euro',
-        Time_Zone: 'GMT+1',
-        Title: 'Monsieur',
-        Last_name: 'Paul',
-        First_name: 'Staelen',
-        Statut: 'Prospect'
-      }, {
-        Name_Mark_Dénomination: 'Paul Staellen/ Bloking /Général constructor',
-        Email: 'jean@gmail.com',
-        Phone: '07-81-11-31-67',
-        Entity: 'Blocking',
-        Adress: '14 rue du 4 septembre',
-        Zip_Code: '62800',
-        City: 'Lievin',
-        Naf: '4051c',
-        Siret: '12345678',
-        KBIS: 'présent',
-        Country: 'France',
-        Language: 'Française',
-        Money: 'Euro',
-        Time_Zone: 'GMT+1',
-        Title: 'Monsieur',
-        Last_name: 'Paul',
-        First_name: 'Staelen',
-        Statut: 'Client'
-      }],
-      selectMode: 'multi'
+      count: 0,
+      fields: ["Name_Mark_Dénomination", "Email", "Phone", "Adress", "Zip_Code", "City", "Naf", "Siret", "kbis", "Country", "Language", "money", "time_zone", "Title", "Last_name", "First_name", "Status"],
+      items: [],
+      selectMode: "multi"
     };
   },
   methods: {
-    onRowSelected: function onRowSelected(items) {
-      this.selected = items;
-    },
-    selectAllRows: function selectAllRows() {
-      this.$refs.selectableTable.selectAllRows();
-    },
-    clearSelected: function clearSelected() {
-      this.$refs.selectableTable.clearSelected();
-    },
-    selectThirdRow: function selectThirdRow() {
-      // Rows are indexed from 0, so the third row is index 2
-      this.$refs.selectableTable.selectRow(2);
-    },
-    unselectThirdRow: function unselectThirdRow() {
-      // Rows are indexed from 0, so the third row is index 2
-      this.$refs.selectableTable.unselectRow(2);
+    onSubmit: function onSubmit(evt) {
+      axios.get("/api/1.0/contacts");
     }
   }
 });
@@ -2719,73 +2583,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['projects'],
   data: function data() {
     return {
       modes: ['multi', 'single', 'range'],
-      fields: ['nom_prénom', 'Email', 'Tél', 'Entity', 'Adress', 'Zip_Code', 'City', 'Naf', 'Siret', 'KBIS', 'Country', 'Language', 'Money', 'Time_Zone', 'Title', 'Last_name', 'First_name', 'Statut'],
-      items: [{
-        nom_prénom: 'Paul Staellen',
-        Email: 'jean@gmail.com',
-        Tél: '07-81-11-31-67',
-        Entity: 'Blocking',
-        Adress: '14 rue du 4 septembre',
-        Zip_Code: '62800',
-        City: 'Lievin',
-        Naf: '4051c',
-        Siret: '12345678',
-        KBIS: 'présent',
-        Country: 'France',
-        Language: 'Française',
-        Money: 'Euro',
-        Time_Zone: 'GMT+1',
-        Title: 'Monsieur',
-        Last_name: 'Paul',
-        First_name: 'Staelen',
-        Statut: 'interne'
-      }, {
-        nom_prénom: 'Paul Staellen',
-        Email: 'jean@gmail.com',
-        Tél: '07-81-11-31-67',
-        Entity: 'Blocking',
-        Adress: '14 rue du 4 septembre',
-        Zip_Code: '62800',
-        City: 'Lievin',
-        Naf: '4051c',
-        Siret: '12345678',
-        KBIS: 'présent',
-        Country: 'France',
-        Language: 'Française',
-        Money: 'Euro',
-        Time_Zone: 'GMT+1',
-        Title: 'Monsieur',
-        Last_name: 'Paul',
-        First_name: 'Staelen',
-        Statut: 'interne'
-      }, {
-        nom_prénom: 'Paul Staellen',
-        Email: 'jean@gmail.com',
-        Tél: '07-81-11-31-67',
-        Entity: 'Blocking',
-        Adress: '14 rue du 4 septembre',
-        Zip_Code: '62800',
-        City: 'Lievin',
-        Naf: '4051c',
-        Siret: '12345678',
-        KBIS: 'présent',
-        Country: 'France',
-        Language: 'Française',
-        Money: 'Euro',
-        Time_Zone: 'GMT+1',
-        Title: 'Monsieur',
-        Last_name: 'Paul',
-        First_name: 'Staelen',
-        Statut: 'interne'
-      }],
+      fields: ['date', 'nom_prénom', 'Email', 'Tél', 'Entity', 'Adress', 'Zip_Code', 'City', 'Naf', 'Siret', 'KBIS', 'Country', 'Language', 'Money', 'Time_Zone', 'Title', 'Last_name', 'First_name', 'Statut'],
       selectMode: 'multi'
     };
   },
   methods: {
+    onSubmit: function onSubmit(evt) {
+      axios.get('/api/1.0/projects', {});
+    },
     onRowSelected: function onRowSelected(items) {
       this.selected = items;
     },
@@ -106848,7 +106670,7 @@ var es7_promise_finally = __webpack_require__("097d");
     width: {
       type: [String],
       required: false,
-      default: '300'
+      default: '260'
     },
     disableEsc: {
       type: Boolean,
@@ -106900,7 +106722,6 @@ var es7_promise_finally = __webpack_require__("097d");
       this.$emit('closeMenu');
       this.isSideBarOpen = false;
       document.body.classList.remove('bm-overlay');
-      this.$refs.sideNav.style.width = '0px';
     },
     closeMenuOnEsc: function closeMenuOnEsc(e) {
       e = e || window.event;
@@ -108136,501 +107957,37 @@ var render = function() {
             "b-form",
             {
               staticClass: "p-5",
-              on: { submit: _vm.onSubmit, reset: _vm.onReset }
+              on: {
+                submit: function($event) {
+                  $event.preventDefault()
+                  return _vm.onSubmit($event)
+                },
+                reset: _vm.onReset
+              }
             },
             [
               _c(
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-1",
+                    id: "name",
                     label: "Your Last Name:",
-                    "label-for": "input-1"
+                    "label-for": "name"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-1",
+                      id: "name",
                       required: "",
-                      placeholder: "Enter last name",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter name of project"
                     },
                     model: {
-                      value: _vm.form.last_name,
+                      value: _vm.form.projects,
                       callback: function($$v) {
-                        _vm.$set(_vm.form, "last_name", $$v)
+                        _vm.$set(_vm.form, "projects", $$v)
                       },
-                      expression: "form.last_name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-2",
-                    label: "Your First Name:",
-                    "label-for": "input-2"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-2",
-                      required: "",
-                      placeholder: "Enter first name",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.first_name,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "first_name", $$v)
-                      },
-                      expression: "form.first_name"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-3",
-                    label: "Your Title:",
-                    "label-for": "input-3"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-3",
-                      required: "",
-                      placeholder: "Enter title",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.title,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "title", $$v)
-                      },
-                      expression: "form.title"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-4",
-                    label: "Your Statut:",
-                    "label-for": "input-4"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-4",
-                      required: "",
-                      placeholder: "Enter statut",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.status,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "status", $$v)
-                      },
-                      expression: "form.status"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-5",
-                    label: "Email address:",
-                    "label-for": "input-5",
-                    description:
-                      "We'll never share your email with anyone else."
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-5",
-                      type: "email",
-                      required: "",
-                      placeholder: "Enter email",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.email,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "email", $$v)
-                      },
-                      expression: "form.email"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-7",
-                    label: "Your Company Name:",
-                    "label-for": "input-7"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-7",
-                      required: "",
-                      placeholder: "Enter company name",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.company,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "company", $$v)
-                      },
-                      expression: "form.company"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-8",
-                    label: "Your Siret number:",
-                    "label-for": "input-8"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-8",
-                      required: "",
-                      placeholder: "Enter siret number",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.siret,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "siret", $$v)
-                      },
-                      expression: "form.siret"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-9",
-                    label: "Your KBIS number:",
-                    "label-for": "input-9"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-9",
-                      required: "",
-                      placeholder: "Enter KBIS number",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.kbis,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "kbis", $$v)
-                      },
-                      expression: "form.kbis"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-10",
-                    label: "Your Adress:",
-                    "label-for": "input-10"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-10",
-                      required: "",
-                      placeholder: "Enter adress",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.adress,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "adress", $$v)
-                      },
-                      expression: "form.adress"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-11",
-                    label: "Your Zip Code:",
-                    "label-for": "input-11"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-11",
-                      required: "",
-                      placeholder: "Enter zip code",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.zip,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "zip", $$v)
-                      },
-                      expression: "form.zip"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-12",
-                    label: "Your City:",
-                    "label-for": "input-12"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-12",
-                      required: "",
-                      placeholder: "Enter city",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.city,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "city", $$v)
-                      },
-                      expression: "form.city"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-13",
-                    label: "Your Country:",
-                    "label-for": "input-13"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-13",
-                      required: "",
-                      placeholder: "Enter country",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.country,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "country", $$v)
-                      },
-                      expression: "form.country"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-14",
-                    label: "Your Language:",
-                    "label-for": "input-14"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-14",
-                      required: "",
-                      placeholder: "Enter language",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.language,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "language", $$v)
-                      },
-                      expression: "form.language"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-15",
-                    label: "Your Money:",
-                    "label-for": "input-15"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-15",
-                      required: "",
-                      placeholder: "Enter money",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.money,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "money", $$v)
-                      },
-                      expression: "form.money"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-16",
-                    label: "Your Time Zone:",
-                    "label-for": "input-16"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-16",
-                      required: "",
-                      placeholder: "Enter time zone",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.timeZone,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "timeZone", $$v)
-                      },
-                      expression: "form.timeZone"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-17",
-                    label: "Your NAF:",
-                    "label-for": "input-17"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-17",
-                      required: "",
-                      placeholder: "Enter NAF",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.naf,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "naf", $$v)
-                      },
-                      expression: "form.naf"
+                      expression: "form.projects"
                     }
                   })
                 ],
@@ -108989,20 +108346,17 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-1",
+                    id: "lastName",
                     label: "Your Last Name:",
-                    "label-for": "input-1"
+                    "label-for": "lasName"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-1",
+                      id: "lastName",
                       required: "",
-                      placeholder: "Enter last name",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter last name"
                     },
                     model: {
                       value: _vm.form.last_name,
@@ -109020,20 +108374,17 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-2",
+                    id: "firstName",
                     label: "Your First Name:",
-                    "label-for": "input-2"
+                    "label-for": "firstName"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-2",
+                      id: "firstName",
                       required: "",
-                      placeholder: "Enter first name",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter first name"
                     },
                     model: {
                       value: _vm.form.first_name,
@@ -109051,20 +108402,17 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-3",
+                    id: "title",
                     label: "Your Title:",
-                    "label-for": "input-3"
+                    "label-for": "title"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-3",
+                      id: "title",
                       required: "",
-                      placeholder: "Enter title",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter title"
                     },
                     model: {
                       value: _vm.form.title,
@@ -109082,40 +108430,9 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-4",
-                    label: "Your Statut:",
-                    "label-for": "input-4"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-4",
-                      required: "",
-                      placeholder: "Enter statut",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.status,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "status", $$v)
-                      },
-                      expression: "form.status"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-5",
+                    id: "email",
                     label: "Email address:",
-                    "label-for": "input-5",
+                    "label-for": "email",
                     description:
                       "We'll never share your email with anyone else."
                   }
@@ -109123,12 +108440,10 @@ var render = function() {
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-5",
+                      id: "email",
                       type: "email",
                       required: "",
-                      placeholder: "Enter email",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter email"
                     },
                     model: {
                       value: _vm.form.email,
@@ -109146,20 +108461,45 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-7",
-                    label: "Your Company Name:",
-                    "label-for": "input-7"
+                    id: "phone",
+                    label: "Your phone:",
+                    "label-for": "phone"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-7",
+                      id: "phone",
                       required: "",
-                      placeholder: "Enter company name",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter phone"
+                    },
+                    model: {
+                      value: _vm.form.phone,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "phone", $$v)
+                      },
+                      expression: "form.phone"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "company",
+                    label: "Your Company Name:",
+                    "label-for": "company"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "company",
+                      required: "",
+                      placeholder: "Enter company name"
                     },
                     model: {
                       value: _vm.form.company,
@@ -109177,20 +108517,45 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-8",
-                    label: "Your Siret number:",
-                    "label-for": "input-8"
+                    id: "mark",
+                    label: "Your mark Name:",
+                    "label-for": "mark"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-8",
+                      id: "mark",
                       required: "",
-                      placeholder: "Enter siret number",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter mark name"
+                    },
+                    model: {
+                      value: _vm.form.mark,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "mark", $$v)
+                      },
+                      expression: "form.mark"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "siret",
+                    label: "Your Siret number:",
+                    "label-for": "siret"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "siret",
+                      required: "",
+                      placeholder: "Enter siret number"
                     },
                     model: {
                       value: _vm.form.siret,
@@ -109208,20 +108573,17 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-9",
+                    id: "kbis",
                     label: "Your KBIS number:",
-                    "label-for": "input-9"
+                    "label-for": "kbis"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-9",
+                      id: "kbis",
                       required: "",
-                      placeholder: "Enter KBIS number",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter KBIS number"
                     },
                     model: {
                       value: _vm.form.kbis,
@@ -109239,20 +108601,17 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-10",
+                    id: "adress",
                     label: "Your Adress:",
-                    "label-for": "input-10"
+                    "label-for": "adress"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-10",
+                      id: "adress",
                       required: "",
-                      placeholder: "Enter adress",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter adress"
                     },
                     model: {
                       value: _vm.form.adress,
@@ -109270,27 +108629,24 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-11",
+                    id: "zip_code",
                     label: "Your Zip Code:",
-                    "label-for": "input-11"
+                    "label-for": "zip_code"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-11",
+                      id: "zip_code",
                       required: "",
-                      placeholder: "Enter zip code",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter zip code"
                     },
                     model: {
-                      value: _vm.form.zip,
+                      value: _vm.form.zip_code,
                       callback: function($$v) {
-                        _vm.$set(_vm.form, "zip", $$v)
+                        _vm.$set(_vm.form, "zip_code", $$v)
                       },
-                      expression: "form.zip"
+                      expression: "form.zip_code"
                     }
                   })
                 ],
@@ -109301,20 +108657,17 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-12",
+                    id: "city",
                     label: "Your City:",
-                    "label-for": "input-12"
+                    "label-for": "city"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-12",
+                      id: "city",
                       required: "",
-                      placeholder: "Enter city",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter city"
                     },
                     model: {
                       value: _vm.form.city,
@@ -109332,20 +108685,17 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-13",
+                    id: "country",
                     label: "Your Country:",
-                    "label-for": "input-13"
+                    "label-for": "country"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-13",
+                      id: "country",
                       required: "",
-                      placeholder: "Enter country",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter country"
                     },
                     model: {
                       value: _vm.form.country,
@@ -109363,20 +108713,17 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-14",
+                    id: "language",
                     label: "Your Language:",
-                    "label-for": "input-14"
+                    "label-for": "language"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-14",
+                      id: "language",
                       required: "",
-                      placeholder: "Enter language",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter language"
                     },
                     model: {
                       value: _vm.form.language,
@@ -109393,83 +108740,14 @@ var render = function() {
               _c(
                 "b-form-group",
                 {
-                  attrs: {
-                    id: "input-group-15",
-                    label: "Your Money:",
-                    "label-for": "input-15"
-                  }
+                  attrs: { id: "naf", label: "Your NAF:", "label-for": "naf" }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-15",
+                      id: "naf",
                       required: "",
-                      placeholder: "Enter money",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.money,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "money", $$v)
-                      },
-                      expression: "form.money"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-16",
-                    label: "Your Time Zone:",
-                    "label-for": "input-16"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-16",
-                      required: "",
-                      placeholder: "Enter time zone",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
-                    },
-                    model: {
-                      value: _vm.form.timeZone,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "timeZone", $$v)
-                      },
-                      expression: "form.timeZone"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-17",
-                    label: "Your NAF:",
-                    "label-for": "input-17"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-17",
-                      required: "",
-                      placeholder: "Enter NAF",
-                      type: "hidden",
-                      name: "_token",
-                      value: _vm.csrf
+                      placeholder: "Enter NAF"
                     },
                     model: {
                       value: _vm.form.naf,
@@ -109741,7 +109019,7 @@ var render = function() {
           "a",
           {
             staticClass: "d-flex a-item",
-            attrs: { id: "developper", href: "/contact" }
+            attrs: { id: "developper", href: "/contacts" }
           },
           [
             _c("span", { staticClass: "span-item" }, [
@@ -109868,18 +109146,77 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("b-table", {
-    ref: "selectableTable",
-    attrs: {
-      selectable: "",
-      "select-mode": _vm.selectMode,
-      "selected-variant": "active",
-      items: _vm.items,
-      fields: _vm.fields,
-      responsive: "sm"
-    },
-    on: { "row-selected": _vm.onRowSelected }
-  })
+  return _c("table", { staticClass: "table" }, [
+    _c("thead", [
+      _c(
+        "tr",
+        [
+          _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+          _vm._v(" "),
+          _vm._l(_vm.fields, function(item) {
+            return _c("th", { key: item.id, attrs: { scope: "col" } }, [
+              _vm._v(_vm._s(item))
+            ])
+          })
+        ],
+        2
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "tbody",
+      _vm._l(_vm.contacts, function(item) {
+        return _c("tr", { key: item.id }, [
+          _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(_vm.count++))]),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v(
+              _vm._s(item.first_name) +
+                " \\ " +
+                _vm._s(item.last_name) +
+                " \\ " +
+                _vm._s(item.mark) +
+                " \\ " +
+                _vm._s(item.company)
+            )
+          ]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.email))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.phone))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.adress))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.zip_code))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.city))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.naf))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.siret))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.kbis))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.country))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.language))]),
+          _vm._v(" "),
+          _c("td", [_vm._v("euro")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("gmt1")]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.title))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.last_name))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.first_name))]),
+          _vm._v(" "),
+          _c("td", [_vm._v("Clients")])
+        ])
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -109903,18 +109240,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("b-table", {
-    ref: "selectableTable",
-    attrs: {
-      selectable: "",
-      "select-mode": _vm.selectMode,
-      "selected-variant": "active",
-      items: _vm.items,
-      fields: _vm.fields,
-      responsive: "sm"
-    },
-    on: { "row-selected": _vm.onRowSelected }
-  })
+  return _c("table", [
+    _c("thead", [
+      _c(
+        "tr",
+        _vm._l(_vm.fields, function(item) {
+          return _c("th", { key: item.id, attrs: { scope: "col" } }, [
+            _vm._v(_vm._s(item))
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "tbody",
+      _vm._l(_vm.projects, function(item) {
+        return _c("tr", { key: item.id }, [
+          _c("td", [_vm._v(_vm._s(item.created_at))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.name))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.archived))])
+        ])
+      }),
+      0
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -122889,8 +122241,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\francois\Desktop\laravel\erp\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\francois\Desktop\laravel\erp\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/popschool/projects/Laravel/erp-vue/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/popschool/projects/Laravel/erp-vue/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

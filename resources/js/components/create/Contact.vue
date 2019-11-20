@@ -1,54 +1,50 @@
 <template>
 <div>
     <b-form @submit="onSubmit" @reset="onReset" v-if="show" class="p-5">
-        <b-form-group id="input-group-1" label="Your Last Name:" label-for="input-1">
-            <b-form-input id="input-1" v-model="form.last_name" required placeholder="Enter last name" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="lastName" label="Your Last Name:" label-for="lasName">
+            <b-form-input id="lastName" v-model="form.last_name" required placeholder="Enter last name"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-2" label="Your First Name:" label-for="input-2">
-            <b-form-input id="input-2" v-model="form.first_name" required placeholder="Enter first name" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="firstName" label="Your First Name:" label-for="firstName">
+            <b-form-input id="firstName" v-model="form.first_name" required placeholder="Enter first name"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-3" label="Your Title:" label-for="input-3">
-            <b-form-input id="input-3" v-model="form.title" required placeholder="Enter title" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="title" label="Your Title:" label-for="title">
+            <b-form-input id="title" v-model="form.title" required placeholder="Enter title"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-4" label="Your Statut:" label-for="input-4">
-            <b-form-input id="input-4" v-model="form.status" required placeholder="Enter statut" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="email" label="Email address:" label-for="email" description="We'll never share your email with anyone else.">
+            <b-form-input id="email" v-model="form.email" type="email" required placeholder="Enter email"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-5" label="Email address:" label-for="input-5" description="We'll never share your email with anyone else.">
-            <b-form-input id="input-5" v-model="form.email" type="email" required placeholder="Enter email" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="phone" label="Your phone:" label-for="phone">
+            <b-form-input id="phone" v-model="form.phone" required placeholder="Enter phone"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-7" label="Your Company Name:" label-for="input-7">
-            <b-form-input id="input-7" v-model="form.company" required placeholder="Enter company name" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="company" label="Your Company Name:" label-for="company">
+            <b-form-input id="company" v-model="form.company" required placeholder="Enter company name"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-8" label="Your Siret number:" label-for="input-8">
-            <b-form-input id="input-8" v-model="form.siret" required placeholder="Enter siret number" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="mark" label="Your mark Name:" label-for="mark">
+            <b-form-input id="mark" v-model="form.mark" required placeholder="Enter mark name"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-9" label="Your KBIS number:" label-for="input-9">
-            <b-form-input id="input-9" v-model="form.kbis" required placeholder="Enter KBIS number" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="siret" label="Your Siret number:" label-for="siret">
+            <b-form-input id="siret" v-model="form.siret" required placeholder="Enter siret number"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-10" label="Your Adress:" label-for="input-10">
-            <b-form-input id="input-10" v-model="form.adress" required placeholder="Enter adress" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="kbis" label="Your KBIS number:" label-for="kbis">
+            <b-form-input id="kbis" v-model="form.kbis" required placeholder="Enter KBIS number"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-11" label="Your Zip Code:" label-for="input-11">
-            <b-form-input id="input-11" v-model="form.zip" required placeholder="Enter zip code" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="adress" label="Your Adress:" label-for="adress">
+            <b-form-input id="adress" v-model="form.adress" required placeholder="Enter adress"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-12" label="Your City:" label-for="input-12">
-            <b-form-input id="input-12" v-model="form.city" required placeholder="Enter city" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="zip_code" label="Your Zip Code:" label-for="zip_code">
+            <b-form-input id="zip_code" v-model="form.zip_code" required placeholder="Enter zip code"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-13" label="Your Country:" label-for="input-13">
-            <b-form-input id="input-13" v-model="form.country" required placeholder="Enter country" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="city" label="Your City:" label-for="city">
+            <b-form-input id="city" v-model="form.city" required placeholder="Enter city"></b-form-input>
         </b-form-group>
-        
-        <b-form-group id="input-group-14" label="Your Language:" label-for="input-14">
-            <b-form-input id="input-14" v-model="form.language" required placeholder="Enter language" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="country" label="Your Country:" label-for="country">
+            <b-form-input id="country" v-model="form.country" required placeholder="Enter country"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-15" label="Your Money:" label-for="input-15">
-            <b-form-input id="input-15" v-model="form.money" required placeholder="Enter money" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="language" label="Your Language:" label-for="language">
+            <b-form-input id="language" v-model="form.language" required placeholder="Enter language"></b-form-input>
         </b-form-group>
-        <b-form-group id="input-group-16" label="Your Time Zone:" label-for="input-16">
-            <b-form-input id="input-16" v-model="form.timeZone" required placeholder="Enter time zone" type="hidden" name="_token" :value="csrf"></b-form-input>
-        </b-form-group>
-        <b-form-group id="input-group-17" label="Your NAF:" label-for="input-17">
-            <b-form-input id="input-17" v-model="form.naf" required placeholder="Enter NAF" type="hidden" name="_token" :value="csrf"></b-form-input>
+        <b-form-group id="naf" label="Your NAF:" label-for="naf">
+            <b-form-input id="naf" v-model="form.naf" required placeholder="Enter NAF"></b-form-input>
         </b-form-group>
         <b-button type="submit" variant="primary">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
@@ -61,7 +57,6 @@
 export default {
     data() {
         return {
-            csrf: "",
             form: {
                 email: '',
                 last_name: '',
@@ -72,37 +67,39 @@ export default {
                 kbis: '',
                 country: '',
                 adress: '',
-                zip: '',
+                zip_code: '',
                 city: '',
                 language: '',
-                money: '',
-                timeZone: '',
                 title: '',
-                statut: ''
+                mark: ''
             },
             show: true,
 
             selected: [], // Must be an array reference!
-            options: [{
-                    text: 'Prospect',
-                    value: 'Prospect'
-                },
-                {
-                    text: 'Client',
-                    value: 'Client'
-                },
-                {
-                    text: 'Commercial',
-                    value: 'Commercial',
-                    //disabled: true
-                }
-            ]
         }
     },
     methods: {
-        onSubmit(evt) {
-            evt.preventDefault()
-            alert(JSON.stringify(this.form))
+        onSubmit(evt){
+                evt.preventDefault()
+                alert(JSON.stringify(this.form))
+                axios.post('/api/1.0/contacts',{
+                    language : this.form.language,
+                    phone : this.form.phone,
+                    last_name : this.form.last_name,
+                    first_name : this.form.first_name,
+                    title : this.form.title,
+                    naf : this.form.naf,
+                    company : this.form.company,
+                    siret : this.form.siret,
+                    kbis : this.form.kbis,
+                    country : this.form.country,
+                    adress : this.form.adress,
+                    zip_code : this.form.zip_code,
+                    city : this.form.city,
+                    email : this.form.email,
+                    mark : this.form.mark,
+
+                })
         },
         onReset(evt) {
             evt.preventDefault()
@@ -121,8 +118,6 @@ export default {
             this.form.zip = ''
             this.form.city = ''
             this.form.language = ''
-            this.form.money = ''
-            this.form.timeZone = ''
             // Trick to reset/clear native browser form validation state
             this.show = false
             this.$nextTick(() => {

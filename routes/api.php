@@ -34,6 +34,7 @@ Route::prefix('1.0')->group(function () {
     ]);
 
     Route::apiResource('projects', 'Api\v1a\ProjectController');
+    Route::apiResource('contacts', 'Api\v1a\ContactController');
     Route::apiResource('projects/{id}/tasks', 'Api\v1a\TaskController');
 });
 Route::fallback(function () {

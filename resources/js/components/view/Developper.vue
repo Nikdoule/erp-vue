@@ -1,80 +1,38 @@
 <template>
-<b-table ref="selectableTable" selectable :select-mode="selectMode" selected-variant="active" :items="items" :fields="fields" @row-selected="onRowSelected" responsive="sm">
-</b-table>
+<table>
+    <thead>
+        <tr>
+            <th scope="col" :key="item.id" v-for="item in fields">{{ item }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr :key="item.id" v-for="item in projects">
+            <td>{{item.created_at}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.archived}}</td>
+        </tr>
+    </tbody>
+</table>
 </template>
 
 <script>
 export default {
+    props:['projects'],
     data() {
         return {
+
             modes: ['multi', 'single', 'range'],
-            fields: ['nom_prénom', 'Email', 'Tél', 'Entity', 'Adress', 'Zip_Code', 'City', 'Naf', 'Siret', 'KBIS', 'Country', 'Language', 'Money', 'Time_Zone', 'Title', 'Last_name', 'First_name', 'Statut'],
-            items: [
-                {
-                nom_prénom: 'Paul Staellen',
-                Email: 'jean@gmail.com',
-                Tél: '07-81-11-31-67',
-                Entity: 'Blocking',
-                Adress: '14 rue du 4 septembre',
-                Zip_Code: '62800',
-                City: 'Lievin',
-                Naf: '4051c',
-                Siret: '12345678',
-                KBIS: 'présent',
-                Country: 'France',
-                Language: 'Française',
-                Money: 'Euro',
-                Time_Zone: 'GMT+1',
-                Title: 'Monsieur',
-                Last_name: 'Paul',
-                First_name: 'Staelen',
-                Statut: 'interne'
-                }, 
-                {
-                nom_prénom: 'Paul Staellen',
-                Email: 'jean@gmail.com',
-                Tél: '07-81-11-31-67',
-                Entity: 'Blocking',
-                Adress: '14 rue du 4 septembre',
-                Zip_Code: '62800',
-                City: 'Lievin',
-                Naf: '4051c',
-                Siret: '12345678',
-                KBIS: 'présent',
-                Country: 'France',
-                Language: 'Française',
-                Money: 'Euro',
-                Time_Zone: 'GMT+1',
-                Title: 'Monsieur',
-                Last_name: 'Paul',
-                First_name: 'Staelen',
-                Statut: 'interne'
-                },
-                {
-                nom_prénom: 'Paul Staellen',
-                Email: 'jean@gmail.com',
-                Tél: '07-81-11-31-67',
-                Entity: 'Blocking',
-                Adress: '14 rue du 4 septembre',
-                Zip_Code: '62800',
-                City: 'Lievin',
-                Naf: '4051c',
-                Siret: '12345678',
-                KBIS: 'présent',
-                Country: 'France',
-                Language: 'Française',
-                Money: 'Euro',
-                Time_Zone: 'GMT+1',
-                Title: 'Monsieur',
-                Last_name: 'Paul',
-                First_name: 'Staelen',
-                Statut: 'interne'
-                }
-            ],
+            fields: ['date','nom_prénom', 'Email', 'Tél', 'Entity', 'Adress', 'Zip_Code', 'City', 'Naf', 'Siret', 'KBIS', 'Country', 'Language', 'Money', 'Time_Zone', 'Title', 'Last_name', 'First_name', 'Statut'],
             selectMode: 'multi',
         }
     },
     methods: {
+        onSubmit(evt) {
+            axios.get('/api/1.0/projects', {
+
+            })
+            
+        },
         onRowSelected(items) {
             this.selected = items
         },

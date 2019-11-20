@@ -27,7 +27,7 @@
         </a>
     </div>
     <div @mouseover="contactShow" @mouseleave="contactHidden" class="d-flex flex-column">
-        <a id="developper" href="/contact" class="d-flex a-item">
+        <a id="developper" href="/contacts" class="d-flex a-item">
             <span class="span-item"><i class="fas fa-user-tie ml-auto mt-auto mb-auto"></i>Contacts</span>
         </a>
         <a href="/create-contact" class="a-item d-none" v-bind:class="[countC == true ? 'd-flex' : countC == false]">

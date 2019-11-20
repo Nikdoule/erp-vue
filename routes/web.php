@@ -13,18 +13,12 @@
 
 Route::middleware('auth')->group(function(){
     //view
-    Route::get('/business-developper', function () {
-        return view('business.developper');
-    });
+    Route::get('/business-developper', 'ProjectController@index');
     Route::get('/monitoring-graphical', function () {
         return view('monitoring.graphical');
     });
-    Route::get('/', function () {
-        return view('case.case');
-    });
-    Route::get('/contact', function () {
-        return view('contact.contact');
-    });
+    Route::get('/', 'CaseController@index');
+    Route::get('/contacts', 'ContactController@index');
     //create
     Route::get('/create-business-developper', function () {
         return view('create.business-developper');
