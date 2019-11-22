@@ -16,11 +16,14 @@ class Developper extends Model
         'siret',
         'kbis',
         'adress',
+        'money',
         'zip_code',
+        'time_zone',
         'city',
         'country',
         'language',
         'naf',
+        'status',
         'phone'
     ];
 

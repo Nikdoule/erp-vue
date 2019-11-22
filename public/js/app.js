@@ -1850,12 +1850,76 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       csrf: "",
       form: {
-        projects: ''
+        last_name: '',
+        first_name: '',
+        adress: '',
+        zip_code: '',
+        city: '',
+        time_zone: '',
+        naf: '',
+        mark: '',
+        company: '',
+        siret: '',
+        kbis: '',
+        country: '',
+        language: '',
+        money: '',
+        title: '',
+        phone: '',
+        status: ''
       },
       show: true
     };
@@ -1863,9 +1927,25 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     onSubmit: function onSubmit(evt) {
       evt.preventDefault();
-      alert(JSON.stringify(this.form.projects));
-      axios.post('/api/1.0/projects', {
-        name: this.form.projects
+      alert(JSON.stringify(this.form));
+      axios.post('/api/1.0/business-developpers', {
+        last_name: this.form.last_name,
+        first_name: this.form.first_name,
+        adress: this.form.adress,
+        zip_code: this.form.zip_code,
+        city: this.form.city,
+        time_zone: this.form.time_zone,
+        naf: this.form.naf,
+        mark: this.form.mark,
+        company: this.form.company,
+        siret: this.form.siret,
+        kbis: this.form.kbis,
+        country: this.form.country,
+        language: this.form.language,
+        money: this.form.money,
+        title: this.form.title,
+        phone: this.form.phone,
+        status: this.form.status
       });
     },
     onReset: function onReset(evt) {
@@ -2595,35 +2675,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['projects'],
+  props: ['developpers'],
   data: function data() {
     return {
-      modes: ['multi', 'single', 'range'],
-      fields: ['date', 'nom_prénom', 'Email', 'Tél', 'Entity', 'Adress', 'Zip_Code', 'City', 'Naf', 'Siret', 'KBIS', 'Country', 'Language', 'Money', 'Time_Zone', 'Title', 'Last_name', 'First_name', 'Statut'],
-      selectMode: 'multi'
+      fields: ['Company Nom Prénom', 'Company', 'Adress', 'Zip_Code', 'City', 'Naf', 'Siret', 'KBIS', 'Country', 'Language', 'Money', 'Time Zone', 'Title', 'Last name', 'First name', 'Status']
     };
   },
   methods: {
     onSubmit: function onSubmit(evt) {
-      axios.get('/api/1.0/projects', {});
-    },
-    onRowSelected: function onRowSelected(items) {
-      this.selected = items;
-    },
-    selectAllRows: function selectAllRows() {
-      this.$refs.selectableTable.selectAllRows();
-    },
-    clearSelected: function clearSelected() {
-      this.$refs.selectableTable.clearSelected();
-    },
-    selectThirdRow: function selectThirdRow() {
-      // Rows are indexed from 0, so the third row is index 2
-      this.$refs.selectableTable.selectRow(2);
-    },
-    unselectThirdRow: function unselectThirdRow() {
-      // Rows are indexed from 0, so the third row is index 2
-      this.$refs.selectableTable.unselectRow(2);
+      axios.get('/api/1.0/business-developpers', {});
     }
   }
 });
@@ -106670,7 +106744,7 @@ var es7_promise_finally = __webpack_require__("097d");
     width: {
       type: [String],
       required: false,
-      default: '260'
+      default: '300'
     },
     disableEsc: {
       type: Boolean,
@@ -106722,6 +106796,7 @@ var es7_promise_finally = __webpack_require__("097d");
       this.$emit('closeMenu');
       this.isSideBarOpen = false;
       document.body.classList.remove('bm-overlay');
+      this.$refs.sideNav.style.width = '0px';
     },
     closeMenuOnEsc: function closeMenuOnEsc(e) {
       e = e || window.event;
@@ -107970,24 +108045,468 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "name",
+                    id: "lastName",
                     label: "Your Last Name:",
-                    "label-for": "name"
+                    "label-for": "lastName"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "name",
+                      id: "lastName",
                       required: "",
-                      placeholder: "Enter name of project"
+                      placeholder: "Enter last name"
                     },
                     model: {
-                      value: _vm.form.projects,
+                      value: _vm.form.last_name,
                       callback: function($$v) {
-                        _vm.$set(_vm.form, "projects", $$v)
+                        _vm.$set(_vm.form, "last_name", $$v)
                       },
-                      expression: "form.projects"
+                      expression: "form.last_name"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "firstName",
+                    label: "Your First Name:",
+                    "label-for": "firstName"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "firstName",
+                      required: "",
+                      placeholder: "Enter first name"
+                    },
+                    model: {
+                      value: _vm.form.first_name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "first_name", $$v)
+                      },
+                      expression: "form.first_name"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "adress",
+                    label: "Your Adress:",
+                    "label-for": "adress"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "adress",
+                      required: "",
+                      placeholder: "Enter adress"
+                    },
+                    model: {
+                      value: _vm.form.adress,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "adress", $$v)
+                      },
+                      expression: "form.adress"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "zipCode",
+                    label: "Your Zip Code:",
+                    "label-for": "zipCode"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "zipCode",
+                      required: "",
+                      placeholder: "Enter zip code"
+                    },
+                    model: {
+                      value: _vm.form.zip_code,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "zip_code", $$v)
+                      },
+                      expression: "form.zip_code"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "city",
+                    label: "Your City:",
+                    "label-for": "city"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "city",
+                      required: "",
+                      placeholder: "Enter city"
+                    },
+                    model: {
+                      value: _vm.form.city,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "city", $$v)
+                      },
+                      expression: "form.city"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "timeZone",
+                    label: "Your Time Zone:",
+                    "label-for": "timeZone"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "timeZone",
+                      required: "",
+                      placeholder: "Enter time zone"
+                    },
+                    model: {
+                      value: _vm.form.time_zone,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "time_zone", $$v)
+                      },
+                      expression: "form.time_zone"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: { id: "naf", label: "Your Naf:", "label-for": "naf" }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "naf",
+                      required: "",
+                      placeholder: "Enter naf"
+                    },
+                    model: {
+                      value: _vm.form.naf,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "naf", $$v)
+                      },
+                      expression: "form.naf"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "mark",
+                    label: "Your Mark:",
+                    "label-for": "mark"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "mark",
+                      required: "",
+                      placeholder: "Enter mark"
+                    },
+                    model: {
+                      value: _vm.form.mark,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "mark", $$v)
+                      },
+                      expression: "form.mark"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "company",
+                    label: "Your Company:",
+                    "label-for": "company"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "company",
+                      required: "",
+                      placeholder: "Enter company"
+                    },
+                    model: {
+                      value: _vm.form.company,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "company", $$v)
+                      },
+                      expression: "form.company"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "siret",
+                    label: "Your Siret:",
+                    "label-for": "siret"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "siret",
+                      required: "",
+                      placeholder: "Enter siret"
+                    },
+                    model: {
+                      value: _vm.form.siret,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "siret", $$v)
+                      },
+                      expression: "form.siret"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "kbis",
+                    label: "Your Kbis:",
+                    "label-for": "kbis"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "kbis",
+                      required: "",
+                      placeholder: "Enter kbis"
+                    },
+                    model: {
+                      value: _vm.form.kbis,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "kbis", $$v)
+                      },
+                      expression: "form.kbis"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "country",
+                    label: "Your Country:",
+                    "label-for": "country"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "country",
+                      required: "",
+                      placeholder: "Enter country"
+                    },
+                    model: {
+                      value: _vm.form.country,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "country", $$v)
+                      },
+                      expression: "form.country"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "language",
+                    label: "Your Language:",
+                    "label-for": "language"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "language",
+                      required: "",
+                      placeholder: "Enter language"
+                    },
+                    model: {
+                      value: _vm.form.language,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "language", $$v)
+                      },
+                      expression: "form.language"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "money",
+                    label: "Your Money:",
+                    "label-for": "money"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "money",
+                      required: "",
+                      placeholder: "Enter money"
+                    },
+                    model: {
+                      value: _vm.form.money,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "money", $$v)
+                      },
+                      expression: "form.money"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "title",
+                    label: "Your Title:",
+                    "label-for": "title"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "title",
+                      required: "",
+                      placeholder: "Enter title"
+                    },
+                    model: {
+                      value: _vm.form.title,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "title", $$v)
+                      },
+                      expression: "form.title"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "phone",
+                    label: "Your Phone:",
+                    "label-for": "phone"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "phone",
+                      required: "",
+                      placeholder: "Enter phone"
+                    },
+                    model: {
+                      value: _vm.form.phone,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "phone", $$v)
+                      },
+                      expression: "form.phone"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
+                    id: "status",
+                    label: "Your Status:",
+                    "label-for": "status"
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "status",
+                      required: "",
+                      placeholder: "Enter status"
+                    },
+                    model: {
+                      value: _vm.form.status,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "status", $$v)
+                      },
+                      expression: "form.status"
                     }
                   })
                 ],
@@ -109255,13 +109774,47 @@ var render = function() {
     _vm._v(" "),
     _c(
       "tbody",
-      _vm._l(_vm.projects, function(item) {
+      _vm._l(_vm.developpers, function(item) {
         return _c("tr", { key: item.id }, [
-          _c("td", [_vm._v(_vm._s(item.created_at))]),
+          _c("td", [
+            _vm._v(
+              _vm._s(item.company) +
+                " / " +
+                _vm._s(item.last_name) +
+                " / " +
+                _vm._s(item.first_name)
+            )
+          ]),
           _vm._v(" "),
-          _c("td", [_vm._v(_vm._s(item.name))]),
+          _c("td", [_vm._v(_vm._s(item.company))]),
           _vm._v(" "),
-          _c("td", [_vm._v(_vm._s(item.archived))])
+          _c("td", [_vm._v(_vm._s(item.adress))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.zip_code))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.city))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.naf))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.siret))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.kbis))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.country))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.language))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.money))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.time_zone))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.title))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.last_name))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.first_name))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(item.status))])
         ])
       }),
       0
@@ -122241,8 +122794,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/popschool/projects/Laravel/erp-vue/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/popschool/projects/Laravel/erp-vue/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\francois\Desktop\laravel\erpv0\erp-vue\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\francois\Desktop\laravel\erpv0\erp-vue\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

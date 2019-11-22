@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function(){
     });
     Route::get('/', 'CaseController@index');
     Route::get('/contacts', 'ContactController@index');
+    Route::get('/business-developper', 'BusinessDevlopperController@index');
     //create
     Route::get('/create-business-developper', function () {
         return view('create.business-developper');
