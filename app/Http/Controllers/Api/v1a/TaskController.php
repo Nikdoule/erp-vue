@@ -50,7 +50,6 @@ class TaskController extends Controller
                     'error' => "Project " . $projectId . " not found",
                 ], 404);
             }
-
             if ($task = $project->tasks()->create([
                 'name' => $request->input('name'),
                 'started_at' => $request->input('started_at'),

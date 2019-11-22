@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class Developper extends Model
 {
     protected $fillable = [
         'first_name',
@@ -23,9 +23,5 @@ class Contact extends Model
         'naf',
         'phone'
     ];
-    public function user()
-    {
-        return $this->belongsTo('App\user');
-    }
-            
+
 }

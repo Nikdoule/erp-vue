@@ -33,8 +33,14 @@ Route::prefix('1.0')->group(function () {
         'as' => 'projects.tasks.destroy_by_project'
     ]);
 
+    Route::post('/{userId}/contacts', [
+        'uses' => '\App\Http\Controllers\Api\v1a\ContactController@store',
+        'as' => 'contacts'
+    ]);
+
     Route::apiResource('projects', 'Api\v1a\ProjectController');
     Route::apiResource('contacts', 'Api\v1a\ContactController');
+    Route::apiResource('business-developpers', 'Api\v1a\BusinessDevelopperController');
     Route::apiResource('projects/{id}/tasks', 'Api\v1a\TaskController');
 });
 Route::fallback(function () {
