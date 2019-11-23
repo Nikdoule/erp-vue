@@ -1,5 +1,5 @@
 <template>
-<table>
+<table class="table">
     <thead>
         <tr>
             <th scope="col" :key="item.id" v-for="item in fields">{{ item }}</th>

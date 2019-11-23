@@ -26,5 +26,10 @@ class Developper extends Model
         'status',
         'phone'
     ];
-
+    public function deals() {
+        return $this->hasMany(Deal::class);
+    }
+    public function contacts() {
+        return $this->hasMany(Contact::class);
+    }
 }

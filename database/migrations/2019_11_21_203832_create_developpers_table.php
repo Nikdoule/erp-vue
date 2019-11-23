@@ -32,6 +32,7 @@ class CreateDeveloppersTable extends Migration
             $table->string('title');
             $table->string('phone');
             $table->string('status');
+            
             $table->timestamps();
         });
     }

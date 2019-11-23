@@ -34,6 +34,12 @@
         <b-form-group id="zip_code" label="Your Zip Code:" label-for="zip_code">
             <b-form-input id="zip_code" v-model="form.zip_code" required placeholder="Enter zip code"></b-form-input>
         </b-form-group>
+        <b-form-group id="timeZone" label="Your Time Zone:" label-for="timeZone">
+            <b-form-input id="timeZone" v-model="form.time_zone" required placeholder="Enter time zone"></b-form-input>
+        </b-form-group>
+        <b-form-group id="money" label="Your Money:" label-for="money">
+            <b-form-input id="money" v-model="form.money" required placeholder="Enter money"></b-form-input>
+        </b-form-group>
         <b-form-group id="city" label="Your City:" label-for="city">
             <b-form-input id="city" v-model="form.city" required placeholder="Enter city"></b-form-input>
         </b-form-group>
@@ -45,6 +51,9 @@
         </b-form-group>
         <b-form-group id="naf" label="Your NAF:" label-for="naf">
             <b-form-input id="naf" v-model="form.naf" required placeholder="Enter NAF"></b-form-input>
+        </b-form-group>
+        <b-form-group id="status" label="Your Status:" label-for="status">
+            <b-form-input id="status" v-model="form.status" required placeholder="Enter status"></b-form-input>
         </b-form-group>
         <b-button type="submit" variant="primary">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
@@ -71,7 +80,10 @@ export default {
                 city: '',
                 language: '',
                 title: '',
-                mark: ''
+                mark: '',
+                status: '',
+                money: '',
+                time_zone: '',
             },
             show: true,
 
@@ -82,7 +94,7 @@ export default {
         onSubmit(evt){
                 evt.preventDefault()
                 alert(JSON.stringify(this.form))
-                axios.post('/api/1.0/contacts',{
+                axios.post('/api/1.0/business-developpers/1/contacts',{
                     language : this.form.language,
                     phone : this.form.phone,
                     last_name : this.form.last_name,
@@ -98,6 +110,9 @@ export default {
                     city : this.form.city,
                     email : this.form.email,
                     mark : this.form.mark,
+                    status : this.form.status,
+                    money : this.form.money,
+                    time_zone : this.form.time_zone,
 
                 })
         },
@@ -124,9 +139,6 @@ export default {
                 this.show = true
             })
         }
-    },
-    mounted() {
-        this.csrf = window.laravel.csrfToken        
     }
 }
 </script>

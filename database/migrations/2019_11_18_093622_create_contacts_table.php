@@ -27,9 +27,13 @@ class CreateContactsTable extends Migration
             $table->string('language');
             $table->string('naf');
             $table->integer('phone');
+            $table->string('money');
+            $table->string('status');
             $table->boolean('kbis');
             $table->integer('siret');
+            $table->string('time_zone');
             $table->integer('zip_code');
+            $table->unsignedBigInteger('developper_id');
             $table->timestamps();
         });
     }

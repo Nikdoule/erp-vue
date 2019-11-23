@@ -8,7 +8,7 @@
         </thead>
         <tbody>
             <tr :key="item.id" v-for="item in items" class="" v-bind:class="[item.action == 'Terminer' ? 'coolGrenn' : item.action == 'Refuser' ?  'coolRed' : '']">
-                <th scope="row">{{ item.date }}</th>
+                <th scope="row">{{item.date}}</th>
                 <td>{{item.reference}}</td>
                 <td>{{item.designation}}</td>
                 <td>{{item.contact}}</td>

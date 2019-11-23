@@ -21,11 +21,22 @@ class Contact extends Model
         'country',
         'language',
         'naf',
-        'phone'
+        'phone',
+        'status',
+        'money',
+        'time_zone'
     ];
     public function user()
     {
-        return $this->belongsTo('App\user');
+        return $this->belongsTo(User::class);
+    }
+    public function developper()
+    {
+        return $this->belongsTo(Developper::class);
+    }
+    public function deal()
+    {
+        return $this->hasMany(Deal::class);
     }
             
 }

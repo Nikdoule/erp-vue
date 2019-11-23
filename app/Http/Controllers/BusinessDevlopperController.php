@@ -15,4 +15,8 @@ class BusinessDevlopperController extends Controller
             'developpers' => $developpers
         ]);
     }
-}
+    public function store()
+    {
+        return view('create.business-developper');
+    }
+}   

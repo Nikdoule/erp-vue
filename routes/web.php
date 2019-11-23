@@ -13,23 +13,18 @@
 
 Route::middleware('auth')->group(function(){
     //view
-    Route::get('/business-developper', 'ProjectController@index');
-    Route::get('/monitoring-graphical', function () {
-        return view('monitoring.graphical');
-    });
-    Route::get('/', 'CaseController@index');
+    Route::get('/monitoring-graphical', 'MonitoringController@index');
+    Route::get('/', 'DealController@index');
+
     Route::get('/contacts', 'ContactController@index');
+
     Route::get('/business-developper', 'BusinessDevlopperController@index');
     //create
-    Route::get('/create-business-developper', function () {
-        return view('create.business-developper');
-    });
-    Route::get('/create-case', function () {
-        return view('create.case');
-    });
-    Route::get('/create-contact', function () {
-        return view('create.contact');
-    });
+    Route::get('/create-business-developper', 'BusinessDevlopperController@store');
+
+    Route::get('/create-case', 'DealController@store');
+
+    Route::get('/create-contact', 'ContactController@store');
     //auth
     Route::get('comptes', function(){
 

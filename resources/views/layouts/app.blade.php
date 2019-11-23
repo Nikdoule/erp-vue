@@ -71,7 +71,7 @@
             @yield('developper-view')
             @yield('graphical-view')
             @yield('count')
-            @yield('create-case')
+            @yield('create-deal')
             @yield('view-case')
             @yield('create-contact')
             @yield('view-contact')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\v1a;
 
 use App\Contact;
+use App\Developper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -40,18 +41,46 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $developperId)
     {
         try {
-            $contacts = Contact::create($request->all());
-
-            return response()->json([
-                'error' => false,
-                'contact'  => $contacts,
-            ], 200);
+            $developper = Developper::find($developperId);
+            if (empty($developper)) {
+                return response()->json([
+                    'error' => "Developper " . $developperId . " not found",
+                ], 404);
+            }
+            if ($contact = $developper->contacts()->create([
+                'first_name' => $request->input('first_name'),
+                'last_name' => $request->input('last_name'),
+                'title' => $request->input('title'),
+                'email' => $request->input('email'),
+                'company' => $request->input('company'),
+                'mark' => $request->input('mark'),
+                'adress' => $request->input('adress'),
+                'city' => $request->input('city'),
+                'country' => $request->input('country'),
+                'language' => $request->input('language'),
+                'naf' => $request->input('naf'),
+                'phone' => $request->input('phone'),
+                'kbis' => $request->input('kbis'),
+                'siret' => $request->input('siret'),
+                'zip_code' => $request->input('zip_code'),
+                'money' => $request->input('money'),
+                'status' => $request->input('status'),
+                'time_zone' => $request->input('time_zone')
+            ])) {
+                return response()->json([
+                    'contact'  => $contact,
+                ], 200);
+            } else {
+                return response()->json([
+                    'error' => "Database error : can't add contact to business developper " . $developperId,
+                ], 500);
+            }
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't create this contact",
+                'error' => "Can't add contact to this business developper",
             ], 500);
         }
     }
@@ -62,13 +91,13 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($contactId, $developperId)
     {
         try {
-            $contact = Contact::find($id);
+            $contact = Contact::find($contactId);
             if (empty($contact)) {
                 return response()->json([
-                    'error' => "Contact " . $id . " not found",
+                    'error' => "Contact " . $contactId . " not found",
                 ], 404);
             }
             return response()->json([
@@ -88,16 +117,16 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $contactId, $developperId)
     {
         try {
-            $contact = Contact::find($id);
+            $contact = Contact::find($contactId);
             if (empty($contact)) {
                 return response()->json([
-                    'error' => "Contact" . $id . " not found",
+                    'error' => "Contact" . $contactId . " not found",
                 ], 404);
             }
-
+            
             $contact->first_name = $request->input('first_name');
             $contact->last_name = $request->input('last_name');
             $contact->title = $request->input('title');
@@ -117,48 +146,18 @@ class ContactController extends Controller
             if ($contact->save()) {
                 return response()->json([
                     'contact'  => $contact,
+                    'message'  => "The contact has successfully been save.",
                 ], 200);
             } else {
                 return response()->json([
-                    'error' => "Database error : can't update contact " . $id,
+                    'error' => "Database error : can't update contact " . $contactId,
                 ], 500);
             }
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't update this contact",
+                'error' => "Can't update this contact $contactId to business devevlopper $developperId",
             ], 500);
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        try {
-            $contact = Contact::find($id);
-            if (empty($contact)) {
-                return response()->json([
-                    'error' => "contact " . $id . " not found",
-                ], 404);
-            }
-
-            if ($contact->delete()) {
-                return response()->json([
-                    'message'  => "The contact $contact->id has successfully been deleted.",
-                ], 200);
-            } else {
-                return response()->json([
-                    'error' => "Database error : can't delete contact " . $id,
-                ], 500);
-            }
-        } catch (Exception $ex) {
-            return response()->json([
-                'error' => "Can't delete this contact",
-            ], 500);
-        }
-    }
 }

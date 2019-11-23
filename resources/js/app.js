@@ -38,7 +38,7 @@ Vue.component('contact-view', require('./components/view/Contact.vue').default);
 Vue.component('data-view', require('./components/data/Data.vue').default);
 //create
 Vue.component('create-business-developper', require('./components/create/BusinessDevelopper.vue').default);
-Vue.component('create-case', require('./components/create/Case.vue').default);
+Vue.component('create-deal', require('./components/create/Deal.vue').default);
 Vue.component('create-contact', require('./components/create/Contact.vue').default);
 //menu
 Vue.component('menu-vertical', require('./components/menu/Menu.vue').default);

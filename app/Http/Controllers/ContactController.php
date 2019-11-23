@@ -15,4 +15,8 @@ class ContactController extends Controller
             'contacts' => $contacts
         ]);
     }
+    public function store()
+    {
+        return view('create.contact');
+    }
 }

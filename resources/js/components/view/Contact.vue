@@ -8,7 +8,7 @@
     </thead>
     <tbody>
       <tr :key="item.id" v-for="item in contacts">
-        <th scope="row">{{count++}}</th>
+        <th scope="row">{{item.id}}</th>
         <td>{{item.first_name}} \ {{item.last_name}} \ {{item.mark}} \ {{item.company}}</td>
         <td>{{item.email}}</td>
         <td>{{item.phone}}</td>
@@ -20,12 +20,12 @@
         <td>{{item.kbis}}</td>
         <td>{{item.country}}</td>
         <td>{{item.language}}</td>
-        <td>euro</td>
-        <td>gmt1</td>
+        <td>{{item.money}}</td>
+        <td>{{item.time_zone}}</td>
         <td>{{item.title}}</td>
         <td>{{item.last_name}}</td>
         <td>{{item.first_name}}</td>
-        <td>Clients</td>
+        <td>{{item.status}}</td>
       </tr>
     </tbody>
   </table>
@@ -36,7 +36,6 @@ export default {
   props: ["contacts"],
   data() {
     return {
-      count: 0,
       fields: [
         "Name_Mark_Dénomination",
         "Email",
