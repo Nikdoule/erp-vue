@@ -2,6 +2,6 @@
 @section('view-case')
 <section>
     <h2 class="text-center mb-5">Suivi Des Affaires</h2>
-    <case-view></case-view>
+    <case-view :deals="{{ $deals }}"></case-view>
 </section>
 @endsection

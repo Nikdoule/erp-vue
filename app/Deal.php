@@ -17,12 +17,10 @@ class Deal extends Model
     {
         return $this->belongsTo(Contact::class);
     }
-    public function developper()
-    {
-        return $this->belongsTo(Developper::class);
-    }
+    
     public function actions()
     {
         return $this->hasMany(Action::class);
     }
+
 }

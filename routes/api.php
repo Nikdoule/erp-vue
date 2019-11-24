@@ -18,32 +18,32 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::prefix('1.0')->group(function () {
 
-    Route::get('/ping', [
-        'uses' => '\App\Http\Controllers\Api\v1a\PingController@ping',
-        'as' => 'test.ping'
-    ]);
-    
-    Route::post('/projects/{id}/archive', [
-        'uses' => '\App\Http\Controllers\Api\v1a\ProjectController@setArchived',
-        'as' => 'projects.archive'
-    ]);
-
-    Route::delete('/projects/{projectId}/tasks', [
-        'uses' => '\App\Http\Controllers\Api\v1a\TaskController@destroyByProject',
-        'as' => 'projects.tasks.destroy_by_project'
-    ]);
-
-    // Route::post('/{userId}/contacts', [
-    //     'uses' => '\App\Http\Controllers\Api\v1a\ContactController@store',
-    //     'as' => 'contacts'
+    // Route::get('/ping', [
+    //     'uses' => '\App\Http\Controllers\Api\v1a\PingController@ping',
+    //     'as' => 'test.ping'
     // ]);
+    
+    // Route::post('/projects/{id}/archive', [
+    //     'uses' => '\App\Http\Controllers\Api\v1a\ProjectController@setArchived',
+    //     'as' => 'projects.archive'
+    // ]);
+
+    // Route::delete('/projects/{projectId}/tasks', [
+    //     'uses' => '\App\Http\Controllers\Api\v1a\TaskController@destroyByProject',
+    //     'as' => 'projects.tasks.destroy_by_project'
+    // ]);
+
 
     Route::apiResource('projects', 'Api\v1a\ProjectController');
     // Route::apiResource('contacts', 'Api\v1a\ContactController');
     Route::apiResource('business-developpers', 'Api\v1a\BusinessDevelopperController');
+
     Route::apiResource('projects/{id}/tasks', 'Api\v1a\TaskController');
-    Route::apiResource('business-developpers/{developperId}/deals', 'Api\v1a\DealController');
+
+    Route::apiResource('business-developpers/{developperId}/contacts/{contactId}/deals', 'Api\v1a\DealController');
+
     Route::apiResource('business-developpers/{developperId}/contacts', 'Api\v1a\ContactController');
+
     Route::apiResource('business-developpers/{developperId}/deals/{dealId}/actions', 'Api\v1a\ActionController');
 });
 Route::fallback(function () {

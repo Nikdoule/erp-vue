@@ -11,12 +11,12 @@ class ContactController extends Controller
     {
         $contacts = Contact::all();
         
-        return view('contact.contact',[
+        return view('contact.view',[
             'contacts' => $contacts
         ]);
     }
     public function store()
     {
-        return view('create.contact');
+        return view('contact.create');
     }
 }

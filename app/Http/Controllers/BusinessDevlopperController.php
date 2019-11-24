@@ -11,12 +11,22 @@ class BusinessDevlopperController extends Controller
     {
         $developpers = Developper::all();
         
-        return view('business.developper',[
+        return view('business-developper.view',[
             'developpers' => $developpers
         ]);
     }
     public function store()
     {
-        return view('create.business-developper');
+        return view('business-developper.create');
+    }
+    public function show($developperId)
+    {
+        
+        $developper = Developper::find($developperId);
+            
+        return([
+            'developper'  => $developper,
+        ]);
+        
     }
 }   

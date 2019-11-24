@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\v1a;
 
 use App\Deal;
-use App\Developper;
+use App\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +14,7 @@ class DealController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($developperId)
+    public function index($developperId, $contactId)
     {
         try {
             $deals = Deal::all();
@@ -41,16 +41,16 @@ class DealController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $developperId)
+    public function store(Request $request, $developperId, $contactId)
     {
         try {
-            $developper = Developper::find($developperId);
-            if (empty($developper)) {
+            $contact = Contact::find($contactId);
+            if (empty($contact)) {
                 return response()->json([
-                    'error' => "Developper " . $developperId . " not found",
+                    'error' => "contact " . $contactId . " not found",
                 ], 404);
             }
-            if ($deal = $developper->deals()->create([
+            if ($deal = $contact->deals()->create([
                 'designation' => $request->input('designation'),
                 'denomination' => $request->input('denomination'),
                 'amount' => $request->input('amount'),
@@ -62,12 +62,12 @@ class DealController extends Controller
                 ], 200);
             } else {
                 return response()->json([
-                    'error' => "Database error : can't add deal to business developper " . $developperId,
+                    'error' => "Database error : can't add deal to contact " . $contactId,
                 ], 500);
             }
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't add deal to this business developper",
+                'error' => "Can't add deal to this contact",
             ], 500);
         }
     }
@@ -77,7 +77,7 @@ class DealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($developperId, $dealId)
+    public function show($developperId, $dealId, $contactId)
     {
         try {
             $deal = Deal::find($dealId);
@@ -103,7 +103,7 @@ class DealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $developperId, $dealId)
+    public function update(Request $request, $developperId, $dealId, $contactId)
     {
         try {
             $deal = Deal::find($dealId);
@@ -112,7 +112,7 @@ class DealController extends Controller
                     'error' => "deal " . $dealId . " not found",
                 ], 404);
             }
-            
+
             $deal->designation = $request->input('designation');
             $deal->denomination = $request->input('denomination');
             $deal->amount = $request->input('amount');

@@ -34,7 +34,7 @@ class Contact extends Model
     {
         return $this->belongsTo(Developper::class);
     }
-    public function deal()
+    public function deals()
     {
         return $this->hasMany(Deal::class);
     }

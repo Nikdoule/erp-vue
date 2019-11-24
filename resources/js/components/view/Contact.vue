@@ -54,9 +54,7 @@ export default {
         "Last_name",
         "First_name",
         "Status"
-      ],
-      items: [],
-      selectMode: "multi"
+      ]
     };
   },
   methods: {

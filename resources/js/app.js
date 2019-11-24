@@ -32,7 +32,7 @@ Vue.use(Chartkick.use(Chart))
 
 //view
 Vue.component('business-view', require('./components/view/Business.vue').default);
-Vue.component('case-view', require('./components/view/case.vue').default);
+Vue.component('case-view', require('./components/view/Deal.vue').default);
 Vue.component('business-dev', require('./components/view/Developper.vue').default);
 Vue.component('contact-view', require('./components/view/Contact.vue').default);
 Vue.component('data-view', require('./components/data/Data.vue').default);

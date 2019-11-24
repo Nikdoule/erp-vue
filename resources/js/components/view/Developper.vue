@@ -2,11 +2,13 @@
 <table class="table">
     <thead>
         <tr>
+            <th scope="row">#</th>
             <th scope="col" :key="item.id" v-for="item in fields">{{ item }}</th>
         </tr>
     </thead>
     <tbody>
-        <tr :key="item.id" v-for="item in developpers">
+        <tr :key="item.id" v-for="item in developpers ">
+            <a v-bind:href="'business-developper/'+item.id"><th scope="row">{{item.id}} {{link}}</th></a>
             <td>{{item.company}} / {{item.last_name}} / {{item.first_name}}</td>
             <td>{{item.company}}</td>
             <td>{{item.adress}}</td>

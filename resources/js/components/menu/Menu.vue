@@ -14,7 +14,7 @@
         </a>
     </div>
     <div @mouseover="caseShow" @mouseleave="caseHidden" class="d-flex flex-column">
-        <a id="developper" href="/" class="d-flex a-item">
+        <a id="developper" href="/deals" class="d-flex a-item">
             <span class="span-item"><i class="fas fa-user-tie ml-auto mt-auto mb-auto"></i>Affaires</span>
         </a>
         <a href="/create-case" class="a-item d-none" v-bind:class="[countB == true ? 'd-flex' : countB == false]">

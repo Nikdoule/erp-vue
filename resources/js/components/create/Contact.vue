@@ -55,6 +55,7 @@
         <b-form-group id="status" label="Your Status:" label-for="status">
             <b-form-input id="status" v-model="form.status" required placeholder="Enter status"></b-form-input>
         </b-form-group>
+        
         <b-button type="submit" variant="primary">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>

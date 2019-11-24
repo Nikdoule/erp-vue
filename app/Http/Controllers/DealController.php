@@ -2,16 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Deal;
+use App\Contact;
 use Illuminate\Http\Request;
 
 class DealController extends Controller
 {
     public function index()
     {
-        return view('deal.deal');
+        $deals = Deal::all();
+        $contacts = Contact::all();
+        
+        return view('deal.view',[
+            'deals' => $deals,
+            'contacts' => $contacts
+        ]);
     }
     public function store()
     {
-        return view('create.deal');
+        $contacts = Contact::all();
+        return view('deal.create',[
+            'contacts' => $contacts
+        ]);
     }
 }
