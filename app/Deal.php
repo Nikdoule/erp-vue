@@ -12,6 +12,8 @@ class Deal extends Model
         'denomination',
         'amount',
         'dropbox',
+        'contact_id',
+        'developper_id'
     ];
     public function contact()
     {
@@ -22,5 +24,10 @@ class Deal extends Model
     {
         return $this->hasMany(Action::class);
     }
+    public function developper()
+    {
+        return $this->belongsTo(Developper::class);
+    }
+
 
 }

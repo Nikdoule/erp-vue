@@ -24,7 +24,8 @@ class Contact extends Model
         'phone',
         'status',
         'money',
-        'time_zone'
+        'time_zone',
+        'developper_id'
     ];
     public function user()
     {

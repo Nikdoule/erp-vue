@@ -55,18 +55,30 @@
         <b-form-group id="status" label="Your Status:" label-for="status">
             <b-form-input id="status" v-model="form.status" required placeholder="Enter status"></b-form-input>
         </b-form-group>
-        
-        <b-button type="submit" variant="primary">Submit</b-button>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Developper</label>
+            <select class="form-control" id="exampleFormControlSelect1" v-model="form.developper_id">
+                <option disabled value="">Choisissez</option>
+                <option :key="item.id" v-for="item in developpers" v-bind:value="item.id">{{item.first_name}}</option>
+            </select>
+        </div>
+        <b-button @click="pushId" type="submit" variant="primary">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
-    
+
 </div>
 </template>
 
 <script>
 export default {
+    props: ["developpers"],
     data() {
         return {
+            item: [
+                {
+                    id:''
+                }
+            ],
             form: {
                 email: '',
                 last_name: '',
@@ -77,6 +89,7 @@ export default {
                 kbis: '',
                 country: '',
                 adress: '',
+                phone: '',
                 zip_code: '',
                 city: '',
                 language: '',
@@ -85,6 +98,7 @@ export default {
                 status: '',
                 money: '',
                 time_zone: '',
+                developper_id: ''
             },
             show: true,
 
@@ -92,30 +106,41 @@ export default {
         }
     },
     methods: {
-        onSubmit(evt){
-                evt.preventDefault()
-                alert(JSON.stringify(this.form))
-                axios.post('/api/1.0/business-developpers/1/contacts',{
-                    language : this.form.language,
-                    phone : this.form.phone,
-                    last_name : this.form.last_name,
-                    first_name : this.form.first_name,
-                    title : this.form.title,
-                    naf : this.form.naf,
-                    company : this.form.company,
-                    siret : this.form.siret,
-                    kbis : this.form.kbis,
-                    country : this.form.country,
-                    adress : this.form.adress,
-                    zip_code : this.form.zip_code,
-                    city : this.form.city,
-                    email : this.form.email,
-                    mark : this.form.mark,
-                    status : this.form.status,
-                    money : this.form.money,
-                    time_zone : this.form.time_zone,
+        pushId: function () {
+            this.item.push(this.form.developper_id)
+        },
+        onSubmit(evt) {
+            evt.preventDefault()
+            alert(JSON.stringify(this.form))
+            axios.post('/api/1.0/contacts', {
+                language: this.form.language,
+                phone: this.form.phone,
+                last_name: this.form.last_name,
+                first_name: this.form.first_name,
+                title: this.form.title,
+                naf: this.form.naf,
+                company: this.form.company,
+                siret: this.form.siret,
+                kbis: this.form.kbis,
+                country: this.form.country,
+                adress: this.form.adress,
+                zip_code: this.form.zip_code,
+                city: this.form.city,
+                email: this.form.email,
+                mark: this.form.mark,
+                status: this.form.status,
+                money: this.form.money,
+                time_zone: this.form.time_zone,
+                developper_id: this.form.developper_id
 
-                })
+            })
+
+        },
+        onGetter(evt) {
+            evt.preventDefault()
+            axios.get('/api/1.0/developpers', {
+
+            })
         },
         onReset(evt) {
             evt.preventDefault()

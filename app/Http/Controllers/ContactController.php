@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Developper;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -17,6 +18,10 @@ class ContactController extends Controller
     }
     public function store()
     {
-        return view('contact.create');
+        $developpers = Developper::all();
+        
+        return view('contact.create',[
+            'developpers' => $developpers
+        ]);
     }
 }

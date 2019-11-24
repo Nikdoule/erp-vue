@@ -35,14 +35,13 @@ Route::prefix('1.0')->group(function () {
 
 
     Route::apiResource('projects', 'Api\v1a\ProjectController');
-    // Route::apiResource('contacts', 'Api\v1a\ContactController');
     Route::apiResource('business-developpers', 'Api\v1a\BusinessDevelopperController');
 
     Route::apiResource('projects/{id}/tasks', 'Api\v1a\TaskController');
 
-    Route::apiResource('business-developpers/{developperId}/contacts/{contactId}/deals', 'Api\v1a\DealController');
+    Route::apiResource('deals', 'Api\v1a\DealController');
 
-    Route::apiResource('business-developpers/{developperId}/contacts', 'Api\v1a\ContactController');
+    Route::apiResource('contacts', 'Api\v1a\ContactController');
 
     Route::apiResource('business-developpers/{developperId}/deals/{dealId}/actions', 'Api\v1a\ActionController');
 });

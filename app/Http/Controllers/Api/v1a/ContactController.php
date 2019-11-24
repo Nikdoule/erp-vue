@@ -41,46 +41,19 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $developperId)
+    public function store(Request $request)
     {
         try {
-            $developper = Developper::find($developperId);
-            if (empty($developper)) {
-                return response()->json([
-                    'error' => "Developper " . $developperId . " not found",
-                ], 404);
-            }
-            if ($contact = $developper->contacts()->create([
-                'first_name' => $request->input('first_name'),
-                'last_name' => $request->input('last_name'),
-                'title' => $request->input('title'),
-                'email' => $request->input('email'),
-                'company' => $request->input('company'),
-                'mark' => $request->input('mark'),
-                'adress' => $request->input('adress'),
-                'city' => $request->input('city'),
-                'country' => $request->input('country'),
-                'language' => $request->input('language'),
-                'naf' => $request->input('naf'),
-                'phone' => $request->input('phone'),
-                'kbis' => $request->input('kbis'),
-                'siret' => $request->input('siret'),
-                'zip_code' => $request->input('zip_code'),
-                'money' => $request->input('money'),
-                'status' => $request->input('status'),
-                'time_zone' => $request->input('time_zone')
-            ])) {
-                return response()->json([
-                    'contact'  => $contact,
-                ], 200);
-            } else {
-                return response()->json([
-                    'error' => "Database error : can't add contact to business developper " . $developperId,
-                ], 500);
-            }
-        } catch (Exception $ex) {
+            $contacts = Contact::create($request->all());
+
             return response()->json([
-                'error' => "Can't add contact to this business developper",
+                'error' => false,
+                'contact'  => $contacts,
+            ], 200);
+
+        }catch (Exception $ex) {
+            return response()->json([
+                'error' => "Can't add contact",
             ], 500);
         }
     }
@@ -91,7 +64,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($contactId, $developperId)
+    public function show($contactId)
     {
         try {
             $contact = Contact::find($contactId);
@@ -117,7 +90,7 @@ class ContactController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $contactId, $developperId)
+    public function update(Request $request, $contactId)
     {
         try {
             $contact = Contact::find($contactId);
@@ -155,7 +128,7 @@ class ContactController extends Controller
             }
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't update this contact $contactId to business devevlopper $developperId",
+                'error' => "Can't update this contact $contactId",
             ], 500);
         }
     }

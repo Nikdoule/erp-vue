@@ -21,6 +21,7 @@ class CreateDealsTable extends Migration
             $table->integer('amount');
             $table->string('dropbox');
             $table->unsignedBigInteger('contact_id');
+            $table->unsignedInteger('developper_id');
             $table->timestamps();
             $table->foreign('contact_id')->references('id')->on('contacts');
         });

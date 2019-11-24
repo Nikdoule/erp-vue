@@ -26,9 +26,10 @@
             <b-form-input id="input-5" v-model="form.origin" required placeholder="Entrez l'origine du contact"></b-form-input>
         </b-form-group>
         <div class="form-group">
-            <label for="exampleFormControlSelect1">Select the contact</label>
-            <select class="form-control" id="exampleFormControlSelect1" :key="item.id" v-for="item in contacts">
-                <option v-bin:value="item.id">{{item.first_name}}</option>
+            <label for="exampleFormControlSelect1">Select the Contact</label>
+            <select class="form-control" id="exampleFormControlSelect1" v-model="form.contact_id">
+                <option disabled value="">Choisissez</option>
+                <option :key="item.id" v-for="item in contacts" v-bind:value="item.id">{{item.first_name}}</option>
             </select>
         </div>
         <h1></h1>
@@ -44,6 +45,11 @@ export default {
     props: ["contacts"],
     data() {
         return {
+            item: [
+                {
+                    id:''
+                }
+            ],
             selected: null,
             form: {
                 date: '',
@@ -53,13 +59,17 @@ export default {
                 denomination: '',
                 price: '',
                 dropbox: '',
-                origin: ''
+                origin: '',
+                contact_id: ''
 
             },
             show: true,
         }
     },
     methods: {
+        pushId: function () {
+            this.item.push(this.form.contact_id)
+        },
         onGetter(evt) {
             axios.get("/api/1.0/contacts");
         },

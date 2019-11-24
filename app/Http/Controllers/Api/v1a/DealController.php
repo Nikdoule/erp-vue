@@ -14,7 +14,7 @@ class DealController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($developperId, $contactId)
+    public function index()
     {
         try {
             $deals = Deal::all();
@@ -41,33 +41,20 @@ class DealController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $developperId, $contactId)
+    public function store(Request $request)
     {
         try {
-            $contact = Contact::find($contactId);
-            if (empty($contact)) {
-                return response()->json([
-                    'error' => "contact " . $contactId . " not found",
-                ], 404);
-            }
-            if ($deal = $contact->deals()->create([
-                'designation' => $request->input('designation'),
-                'denomination' => $request->input('denomination'),
-                'amount' => $request->input('amount'),
-                'reference' => $request->input('reference'),
-                'dropbox' => $request->input('dropbox'),
-            ])) {
-                return response()->json([
-                    'deal'  => $deal,
-                ], 200);
-            } else {
-                return response()->json([
-                    'error' => "Database error : can't add deal to contact " . $contactId,
-                ], 500);
-            }
-        } catch (Exception $ex) {
+
+            $deals = Deal::create($request->all());
+
             return response()->json([
-                'error' => "Can't add deal to this contact",
+                'error' => false,
+                'deal'  => $deals,
+            ], 200);
+
+        }catch (Exception $ex) {
+            return response()->json([
+                'error' => "Can't add deal",
             ], 500);
         }
     }
@@ -77,7 +64,7 @@ class DealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($developperId, $dealId, $contactId)
+    public function show($dealId)
     {
         try {
             $deal = Deal::find($dealId);
@@ -91,7 +78,7 @@ class DealController extends Controller
             ], 200);
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't see this business developper",
+                'error' => "Can't see this deal",
             ], 500);
         }
     }
@@ -103,7 +90,7 @@ class DealController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $developperId, $dealId, $contactId)
+    public function update(Request $request, $dealId)
     {
         try {
             $deal = Deal::find($dealId);
@@ -131,7 +118,7 @@ class DealController extends Controller
             }
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't update task $dealId to project $developperId",
+                'error' => "Can't update deal $dealId",
             ], 500);
         }
         

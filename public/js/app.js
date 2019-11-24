@@ -1898,10 +1898,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      csrf: "",
       form: {
         last_name: '',
         first_name: '',
@@ -1919,7 +1921,8 @@ __webpack_require__.r(__webpack_exports__);
         money: '',
         title: '',
         phone: '',
-        status: ''
+        status: '',
+        email: ''
       },
       show: true
     };
@@ -1945,7 +1948,8 @@ __webpack_require__.r(__webpack_exports__);
         money: this.form.money,
         title: this.form.title,
         phone: this.form.phone,
-        status: this.form.status
+        status: this.form.status,
+        email: this.form.email
       });
     },
     onReset: function onReset(evt) {
@@ -2038,9 +2042,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["developpers"],
   data: function data() {
     return {
+      item: [{
+        id: ''
+      }],
       form: {
         email: '',
         last_name: '',
@@ -2051,6 +2065,7 @@ __webpack_require__.r(__webpack_exports__);
         kbis: '',
         country: '',
         adress: '',
+        phone: '',
         zip_code: '',
         city: '',
         language: '',
@@ -2058,7 +2073,8 @@ __webpack_require__.r(__webpack_exports__);
         mark: '',
         status: '',
         money: '',
-        time_zone: ''
+        time_zone: '',
+        developper_id: ''
       },
       show: true,
       selected: [] // Must be an array reference!
@@ -2066,10 +2082,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    pushId: function pushId() {
+      this.item.push(this.form.developper_id);
+    },
     onSubmit: function onSubmit(evt) {
       evt.preventDefault();
       alert(JSON.stringify(this.form));
-      axios.post('/api/1.0/business-developpers/1/contacts', {
+      axios.post('/api/1.0/contacts', {
         language: this.form.language,
         phone: this.form.phone,
         last_name: this.form.last_name,
@@ -2087,8 +2106,13 @@ __webpack_require__.r(__webpack_exports__);
         mark: this.form.mark,
         status: this.form.status,
         money: this.form.money,
-        time_zone: this.form.time_zone
+        time_zone: this.form.time_zone,
+        developper_id: this.form.developper_id
       });
+    },
+    onGetter: function onGetter(evt) {
+      evt.preventDefault();
+      axios.get('/api/1.0/developpers', {});
     },
     onReset: function onReset(evt) {
       var _this = this;
@@ -2170,10 +2194,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["contacts"],
   data: function data() {
     return {
+      item: [{
+        id: ''
+      }],
       selected: null,
       form: {
         date: '',
@@ -2183,12 +2211,16 @@ __webpack_require__.r(__webpack_exports__);
         denomination: '',
         price: '',
         dropbox: '',
-        origin: ''
+        origin: '',
+        contact_id: ''
       },
       show: true
     };
   },
   methods: {
+    pushId: function pushId() {
+      this.item.push(this.form.contact_id);
+    },
     onGetter: function onGetter(evt) {
       axios.get("/api/1.0/contacts");
     },
@@ -108008,6 +108040,37 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
+                    id: "email",
+                    label: "Email address:",
+                    "label-for": "email",
+                    description:
+                      "We'll never share your email with anyone else."
+                  }
+                },
+                [
+                  _c("b-form-input", {
+                    attrs: {
+                      id: "email",
+                      type: "email",
+                      required: "",
+                      placeholder: "Enter email"
+                    },
+                    model: {
+                      value: _vm.form.email,
+                      callback: function($$v) {
+                        _vm.$set(_vm.form, "email", $$v)
+                      },
+                      expression: "form.email"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-form-group",
+                {
+                  attrs: {
                     id: "adress",
                     label: "Your Adress:",
                     "label-for": "adress"
@@ -108973,9 +109036,67 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+                  _vm._v("Select Developper")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.developper_id,
+                        expression: "form.developper_id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "exampleFormControlSelect1" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.form,
+                          "developper_id",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { disabled: "", value: "" } }, [
+                      _vm._v("Choisissez")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.developpers, function(item) {
+                      return _c(
+                        "option",
+                        { key: item.id, domProps: { value: item.id } },
+                        [_vm._v(_vm._s(item.first_name))]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
+              _vm._v(" "),
               _c(
                 "b-button",
-                { attrs: { type: "submit", variant: "primary" } },
+                {
+                  attrs: { type: "submit", variant: "primary" },
+                  on: { click: _vm.pushId }
+                },
                 [_vm._v("Submit")]
               ),
               _vm._v(" "),
@@ -109248,44 +109369,60 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "form-group" },
-                [
-                  _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
-                    _vm._v("Select the contact")
-                  ]),
-                  _vm._v(" "),
-                  _vm._l(_vm.contacts, function(item) {
-                    return _c(
-                      "select",
+              _c("div", { staticClass: "form-group" }, [
+                _c("label", { attrs: { for: "exampleFormControlSelect1" } }, [
+                  _vm._v("Select the Contact")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
                       {
-                        key: item.id,
-                        staticClass: "form-control",
-                        attrs: { id: "exampleFormControlSelect1" }
-                      },
-                      [
-                        _c(
-                          "option",
-                          {
-                            directives: [
-                              {
-                                name: "bin",
-                                rawName: "v-bin:value",
-                                value: item.id,
-                                expression: "item.id",
-                                arg: "value"
-                              }
-                            ]
-                          },
-                          [_vm._v(_vm._s(item.first_name))]
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.contact_id,
+                        expression: "form.contact_id"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { id: "exampleFormControlSelect1" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.form,
+                          "contact_id",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
                         )
-                      ]
-                    )
-                  })
-                ],
-                2
-              ),
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { disabled: "", value: "" } }, [
+                      _vm._v("Choisissez")
+                    ]),
+                    _vm._v(" "),
+                    _vm._l(_vm.contacts, function(item) {
+                      return _c(
+                        "option",
+                        { key: item.id, domProps: { value: item.id } },
+                        [_vm._v(_vm._s(item.first_name))]
+                      )
+                    })
+                  ],
+                  2
+                )
+              ]),
               _vm._v(" "),
               _c("h1"),
               _vm._v(" "),

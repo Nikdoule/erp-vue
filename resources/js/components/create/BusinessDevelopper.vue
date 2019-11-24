@@ -7,6 +7,9 @@
         <b-form-group id="firstName" label="Your First Name:" label-for="firstName">
             <b-form-input id="firstName" v-model="form.first_name" required placeholder="Enter first name"></b-form-input>
         </b-form-group>
+        <b-form-group id="email" label="Email address:" label-for="email" description="We'll never share your email with anyone else.">
+            <b-form-input id="email" v-model="form.email" type="email" required placeholder="Enter email"></b-form-input>
+        </b-form-group>
         <b-form-group id="adress" label="Your Adress:" label-for="adress">
             <b-form-input id="adress" v-model="form.adress" required placeholder="Enter adress"></b-form-input>
         </b-form-group>
@@ -62,7 +65,6 @@
 export default {
     data() {
         return {
-            csrf: "",
             form: {
                 last_name: '',
                 first_name: '',
@@ -81,6 +83,7 @@ export default {
                 title: '',
                 phone: '',
                 status: '',
+                email: ''
                 
             },
             show: true,
@@ -109,6 +112,7 @@ export default {
                     title: this.form.title,
                     phone: this.form.phone,
                     status: this.form.status,
+                    email: this.form.email
                 
                 })
         },
