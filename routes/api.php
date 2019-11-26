@@ -35,6 +35,7 @@ Route::prefix('1.0')->group(function () {
 
 
     Route::apiResource('projects', 'Api\v1a\ProjectController');
+    
     Route::apiResource('business-developpers', 'Api\v1a\BusinessDevelopperController');
 
     Route::apiResource('projects/{id}/tasks', 'Api\v1a\TaskController');

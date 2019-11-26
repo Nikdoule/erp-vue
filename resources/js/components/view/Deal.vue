@@ -11,7 +11,7 @@
                 <th scope="row">{{item.created_at}}</th>
                 <td>{{item.reference}}</td>
                 <td>{{item.designation}}</td>
-                <td></td>
+                <td>{{item.contact_id}}</td>
                 <td>{{item.denomination}}</td>
                 <td>{{item.amount}}</td>
                 <td>{{item.dropbox}}</td>

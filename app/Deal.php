@@ -12,8 +12,7 @@ class Deal extends Model
         'denomination',
         'amount',
         'dropbox',
-        'contact_id',
-        'developper_id'
+        'contact_id'
     ];
     public function contact()
     {

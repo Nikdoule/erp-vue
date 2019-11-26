@@ -2186,15 +2186,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["contacts"],
   data: function data() {
@@ -2204,14 +2195,11 @@ __webpack_require__.r(__webpack_exports__);
       }],
       selected: null,
       form: {
-        date: '',
         designation: '',
         reference: '',
-        contact: '',
         denomination: '',
-        price: '',
+        amount: '',
         dropbox: '',
-        origin: '',
         contact_id: ''
       },
       show: true
@@ -2221,6 +2209,18 @@ __webpack_require__.r(__webpack_exports__);
     pushId: function pushId() {
       this.item.push(this.form.contact_id);
     },
+    onSubmit: function onSubmit(evt) {
+      evt.preventDefault();
+      alert(JSON.stringify(this.form));
+      axios.post('/api/1.0/deals', {
+        designation: this.form.designation,
+        reference: this.form.reference,
+        denomination: this.form.denomination,
+        amount: this.form.amount,
+        dropbox: this.form.dropbox,
+        contact_id: this.form.contact_id
+      });
+    },
     onGetter: function onGetter(evt) {
       axios.get("/api/1.0/contacts");
     },
@@ -2229,14 +2229,12 @@ __webpack_require__.r(__webpack_exports__);
 
       evt.preventDefault(); // Reset our form values
 
-      this.form.date = '';
       this.form.designation = '';
       this.form.reference = '';
       this.form.contact = '';
       this.form.denomination = '';
-      this.form.price = '';
-      this.form.dropbox = '';
-      this.form.origin = ''; // Trick to reset/clear native browser form validation state
+      this.form.amount = '';
+      this.form.dropbox = ''; // Trick to reset/clear native browser form validation state
 
       this.show = false;
       this.$nextTick(function () {
@@ -109148,44 +109146,15 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-1",
-                    label: "Date:",
-                    "label-for": "input-1"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-1",
-                      required: "",
-                      placeholder: "Entrez la date",
-                      type: "date"
-                    },
-                    model: {
-                      value: _vm.form.date,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "date", $$v)
-                      },
-                      expression: "form.date"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-2",
+                    id: "designation",
                     label: "Désignation social:",
-                    "label-for": "input-2"
+                    "label-for": "designation"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-2",
+                      id: "designation",
                       required: "",
                       placeholder: "Entrez la désignation"
                     },
@@ -109205,15 +109174,15 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-3",
+                    id: "reference",
                     label: "Référence affaire:",
-                    "label-for": "input-3"
+                    "label-for": "reference"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-3",
+                      id: "reference",
                       required: "",
                       placeholder: "Entrez la référence"
                     },
@@ -109233,43 +109202,15 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-4",
-                    label: "Contact:",
-                    "label-for": "input-4"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-4",
-                      required: "",
-                      placeholder: "Entrez le contact"
-                    },
-                    model: {
-                      value: _vm.form.contact,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "contact", $$v)
-                      },
-                      expression: "form.contact"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-5",
+                    id: "denomination",
                     label: "Dénomination social:",
-                    "label-for": "input-5"
+                    "label-for": "denomination"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-5",
+                      id: "denomination",
                       required: "",
                       placeholder: "Entrez la Dénomination social"
                     },
@@ -109289,24 +109230,24 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-5",
+                    id: "amount",
                     label: "Montant de l'affaire:",
-                    "label-for": "input-5"
+                    "label-for": "amount"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-5",
+                      id: "amount",
                       required: "",
                       placeholder: "Entrez le montant de l'affaire"
                     },
                     model: {
-                      value: _vm.form.price,
+                      value: _vm.form.amount,
                       callback: function($$v) {
-                        _vm.$set(_vm.form, "price", $$v)
+                        _vm.$set(_vm.form, "amount", $$v)
                       },
-                      expression: "form.price"
+                      expression: "form.amount"
                     }
                   })
                 ],
@@ -109317,15 +109258,15 @@ var render = function() {
                 "b-form-group",
                 {
                   attrs: {
-                    id: "input-group-5",
+                    id: "dropbox",
                     label: "URL Dropbox:",
-                    "label-for": "input-5"
+                    "label-for": "dropbox"
                   }
                 },
                 [
                   _c("b-form-input", {
                     attrs: {
-                      id: "input-5",
+                      id: "dropbox",
                       required: "",
                       placeholder: "Entrez l'url dropbox"
                     },
@@ -109335,34 +109276,6 @@ var render = function() {
                         _vm.$set(_vm.form, "dropbox", $$v)
                       },
                       expression: "form.dropbox"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "b-form-group",
-                {
-                  attrs: {
-                    id: "input-group-5",
-                    label: "Provenance du contact:",
-                    "label-for": "input-5"
-                  }
-                },
-                [
-                  _c("b-form-input", {
-                    attrs: {
-                      id: "input-5",
-                      required: "",
-                      placeholder: "Entrez l'origine du contact"
-                    },
-                    model: {
-                      value: _vm.form.origin,
-                      callback: function($$v) {
-                        _vm.$set(_vm.form, "origin", $$v)
-                      },
-                      expression: "form.origin"
                     }
                   })
                 ],
@@ -109428,7 +109341,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "b-button",
-                { attrs: { type: "submit", variant: "primary" } },
+                {
+                  attrs: { type: "submit", variant: "primary" },
+                  on: { click: _vm.pushId }
+                },
                 [_vm._v("Submit")]
               ),
               _vm._v(" "),
@@ -109643,7 +109559,7 @@ var render = function() {
           {
             staticClass: "a-item d-none",
             class: [_vm.countB == true ? "d-flex" : _vm.countB == false],
-            attrs: { href: "/create-case" }
+            attrs: { href: "/create-deal" }
           },
           [
             _c("span", { staticClass: "span-item" }, [
@@ -109946,7 +109862,7 @@ var render = function() {
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(item.designation))]),
                 _vm._v(" "),
-                _c("td"),
+                _c("td", [_vm._v(_vm._s(item.contact_id))]),
                 _vm._v(" "),
                 _c("td", [_vm._v(_vm._s(item.denomination))]),
                 _vm._v(" "),
@@ -122948,8 +122864,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\francois\Desktop\laravel\erpv0\erp-vue\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\francois\Desktop\laravel\erpv0\erp-vue\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/popschool/projects/Laravel/cmrv1/erp-vue/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/popschool/projects/Laravel/cmrv1/erp-vue/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
