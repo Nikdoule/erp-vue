@@ -13,6 +13,8 @@
 
 Route::middleware('auth')->group(function(){
     //view
+    Route::get('/parameters', 'ParameterController@index');
+
     Route::get('/monitoring-graphical', 'MonitoringController@index');
 
     Route::get('/deals', 'DealController@index');
@@ -29,7 +31,11 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/create-contact', 'ContactController@store');
 
-    Route::get('/create-parameter', 'ParameterController@index');
+    Route::get('/create-action-parameter', 'ParamActionController@store');
+
+    Route::get('/create-contact-parameter', 'ParamContactController@store');
+    
+    Route::get('/create-todo-parameter', 'ParamTodoController@store');
     //auth
     Route::get('comptes', function(){
 

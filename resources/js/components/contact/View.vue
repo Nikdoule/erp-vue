@@ -57,10 +57,5 @@ export default {
       ]
     };
   },
-  methods: {
-    onSubmit(evt) {
-      axios.get("/api/1.0/contacts");
-    }
-  }
 };
 </script>

@@ -75,7 +75,10 @@
             @yield('view-case')
             @yield('create-contact')
             @yield('view-contact')
-            @yield('create-parameter')
+            @yield('create-action-parameter')
+            @yield('view-parameter')
+            @yield('create-contact-parameter')
+            @yield('create-todo-parameter')
         </main>
     </div>
     <script src="https://kit.fontawesome.com/536fe6e8c5.js" crossorigin="anonymous"></script>

@@ -45,6 +45,12 @@ Route::prefix('1.0')->group(function () {
     Route::apiResource('contacts', 'Api\v1a\ContactController');
 
     Route::apiResource('business-developpers/{developperId}/deals/{dealId}/actions', 'Api\v1a\ActionController');
+
+    Route::apiResource('parameters-actions', 'Api\v1a\ParamActionController');
+
+    Route::apiResource('parameters-contacts', 'Api\v1a\ParamContactController');
+
+    Route::apiResource('parameters-todos', 'Api\v1a\ParamTodoController');
 });
 Route::fallback(function () {
     return response()->json([

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Parameter extends Model
+class Param_contact extends Model
 {
     protected $fillable = [
         'title',

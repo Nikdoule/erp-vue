@@ -31,15 +31,22 @@ Vue.use(Chartkick.use(Chart))
 
 
 //view
-Vue.component('business-view', require('./components/view/Business.vue').default);
-Vue.component('case-view', require('./components/view/Deal.vue').default);
-Vue.component('business-dev', require('./components/view/Developper.vue').default);
-Vue.component('contact-view', require('./components/view/Contact.vue').default);
-Vue.component('data-view', require('./components/data/Data.vue').default);
+Vue.component('case-view', require('./components/deal/View.vue').default);
+Vue.component('business-dev', require('./components/business-developper/View.vue').default);
+Vue.component('contact-view', require('./components/contact/View.vue').default);
+Vue.component('data-view', require('./components/data/View.vue').default);
+Vue.component('view-param-action', require('./components/param-action/View.vue').default);
+Vue.component('view-param-contact', require('./components/param-contact/View.vue').default);
+Vue.component('view-param-todo', require('./components/param-todo/View.vue').default);
 //create
-Vue.component('create-business-developper', require('./components/create/BusinessDevelopper.vue').default);
-Vue.component('create-deal', require('./components/create/Deal.vue').default);
-Vue.component('create-contact', require('./components/create/Contact.vue').default);
+Vue.component('create-business-developper', require('./components/business-developper/Create.vue').default);
+Vue.component('create-deal', require('./components/deal/Create.vue').default);
+Vue.component('create-contact', require('./components/contact/Create.vue').default);
+Vue.component('create-param-action', require('./components/param-action/Create.vue').default);
+Vue.component('create-param-contact', require('./components/param-contact/Create.vue').default);
+Vue.component('create-param-todo', require('./components/param-todo/Create.vue').default);
+
+
 //menu
 Vue.component('menu-vertical', require('./components/menu/Menu.vue').default);
 

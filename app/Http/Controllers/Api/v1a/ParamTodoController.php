@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api\v1a;
 
-use App\Http\Controllers\Controller;
-use App\Parameter;
+use App\Param_todo;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ParameterController extends Controller
+class ParamTodoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,20 +16,20 @@ class ParameterController extends Controller
     public function index()
     {
         try {
-            $parameters = Parameter::all();
+            $param_todos = Param_todo::all();
 
-            if (!$parameters->isEmpty()) {
+            if (!$param_todos->isEmpty()) {
                 return response()->json([
-                    'parameters'  => $parameters,
+                    'param_todos'  => $param_todos,
                 ], 200);
             } else {
                 return response()->json([
-                    'error' => "No business parameters found",
+                    'error' => "No param_todos found",
                 ], 404);
             }
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't list business parameters",
+                'error' => "Can't list param_todos",
             ], 500);
         }
     }
@@ -43,15 +43,15 @@ class ParameterController extends Controller
     public function store(Request $request)
     {
         try {
-            $parameters = Parameter::create($request->all());
+            $param_todos = Param_todo::create($request->all());
 
             return response()->json([
                 'error' => false,
-                'parameter'  => $parameters,
+                'param_todo'  => $param_todos,
             ], 200);
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't create this business parameters",
+                'error' => "Can't create this param_todos",
             ], 500);
         }
     }
@@ -62,21 +62,21 @@ class ParameterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($parameterId)
+    public function show($param_todoId)
     {
         try {
-            $parameter = Parameter::find($parameterId);
-            if (empty($parameter)) {
+            $param_todo = Param_todo::find($param_todoId);
+            if (empty($param_todo)) {
                 return response()->json([
-                    'error' => "business parameters " . $parameterId . " not found",
+                    'error' => "param_todos " . $param_todoId . " not found",
                 ], 404);
             }
             return response()->json([
-                'parameter'  => $parameter,
+                'param_todo'  => $param_todo,
             ], 200);
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can not see this business parameters",
+                'error' => "Can not see this param_todo",
             ], 500);
         }
     }
@@ -88,35 +88,32 @@ class ParameterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $parameterId)
+    public function update(Request $request, $param_todoId)
     {
         try {
-            $parameter = Parameter::find($parameterId);
-            if (empty($parameter)) {
+            $param_todo = Param_todo::find($param_todoId);
+            if (empty($param_todo)) {
                 return response()->json([
-                    'error' => "business parameter" . $parameterId . " not found",
+                    'error' => "param_todo" . $param_todoId . " not found",
                 ], 404);
             }
-            $parameter->title = $request->input('title');
-            $parameter->description = $request->input('description');
+            $param_todo->title = $request->input('title');
+            $param_todo->description = $request->input('description');
             
        
-            if ($parameter->save()) {
+            if ($param_todo->save()) {
                 return response()->json([
-                    '$parameter'  => $parameter,
+                    '$param_todo'  => $param_todo,
                 ], 200);
             } else {
                 return response()->json([
-                    'error' => "Database error : can't update business parameter " . $parameterId,
+                    'error' => "Database error : can't update param_todo " . $param_todoId,
                 ], 500);
             }
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't update this business parameter",
+                'error' => "Can't update this param_todo",
             ], 500);
         }
     }
-
-
-
 }

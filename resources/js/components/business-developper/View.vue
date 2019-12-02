@@ -7,8 +7,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr :key="item.id" v-for="item in developpers ">
-            <a v-bind:href="'business-developper/'+item.id"><th scope="row">{{item.id}} {{link}}</th></a>
+        <tr :key="item.id" v-for="item in developpers">
+            <a v-bind:href="'business-developper/'+item.id"><th scope="row">{{item.id}}</th></a>
             <td>{{item.company}} / {{item.last_name}} / {{item.first_name}}</td>
             <td>{{item.company}}</td>
             <td>{{item.adress}}</td>
@@ -55,12 +55,5 @@ export default {
             ],
         }
     },
-    methods: {
-        onSubmit(evt) {
-            axios.get('/api/1.0/business-developpers', {
-
-            })
-        }
-    }
 }
 </script>

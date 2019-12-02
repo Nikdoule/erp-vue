@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Api\v1a;
 
-use App\Http\Controllers\Controller;
-use App\Parameter;
+use App\Param_contact;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class ParameterController extends Controller
+class ParamContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,24 +16,23 @@ class ParameterController extends Controller
     public function index()
     {
         try {
-            $parameters = Parameter::all();
+            $param_contacts = Param_contact::all();
 
-            if (!$parameters->isEmpty()) {
+            if (!$param_contacts->isEmpty()) {
                 return response()->json([
-                    'parameters'  => $parameters,
+                    'param_contacts'  => $param_contacts,
                 ], 200);
             } else {
                 return response()->json([
-                    'error' => "No business parameters found",
+                    'error' => "No param_contacts found",
                 ], 404);
             }
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't list business parameters",
+                'error' => "Can't list param_contacts",
             ], 500);
         }
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -43,44 +42,42 @@ class ParameterController extends Controller
     public function store(Request $request)
     {
         try {
-            $parameters = Parameter::create($request->all());
+            $param_contacts = Param_contact::create($request->all());
 
             return response()->json([
                 'error' => false,
-                'parameter'  => $parameters,
+                'param_contact'  => $param_contacts,
             ], 200);
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't create this business parameters",
+                'error' => "Can't create this param_contacts",
             ], 500);
         }
     }
-
      /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($parameterId)
+    public function show($param_contactId)
     {
         try {
-            $parameter = Parameter::find($parameterId);
-            if (empty($parameter)) {
+            $param_contact = Param_contact::find($param_contactId);
+            if (empty($param_contact)) {
                 return response()->json([
-                    'error' => "business parameters " . $parameterId . " not found",
+                    'error' => "param_contacts " . $param_contactId . " not found",
                 ], 404);
             }
             return response()->json([
-                'parameter'  => $parameter,
+                'param_contact'  => $param_contact,
             ], 200);
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can not see this business parameters",
+                'error' => "Can not see this param_contacts",
             ], 500);
         }
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -88,35 +85,32 @@ class ParameterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $parameterId)
+    public function update(Request $request, $param_contactId)
     {
         try {
-            $parameter = Parameter::find($parameterId);
-            if (empty($parameter)) {
+            $param_contact = Param_contact::find($param_contactId);
+            if (empty($param_contact)) {
                 return response()->json([
-                    'error' => "business parameter" . $parameterId . " not found",
+                    'error' => "param_contact" . $param_contactId . " not found",
                 ], 404);
             }
-            $parameter->title = $request->input('title');
-            $parameter->description = $request->input('description');
+            $param_contact->title = $request->input('title');
+            $param_contact->description = $request->input('description');
             
        
-            if ($parameter->save()) {
+            if ($param_contact->save()) {
                 return response()->json([
-                    '$parameter'  => $parameter,
+                    '$param_contact'  => $param_contact,
                 ], 200);
             } else {
                 return response()->json([
-                    'error' => "Database error : can't update business parameter " . $parameterId,
+                    'error' => "Database error : can't update param_contact " . $param_contactId,
                 ], 500);
             }
         } catch (Exception $ex) {
             return response()->json([
-                'error' => "Can't update this business parameter",
+                'error' => "Can't update this param_contact",
             ], 500);
         }
     }
-
-
-
 }
