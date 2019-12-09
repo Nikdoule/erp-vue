@@ -25,4 +25,17 @@ class DealController extends Controller
             'contacts' => $contacts
         ]);
     }
+    public function edit($dealId)
+    {
+        $deals = Deal::all();
+        $contacts = Contact::all();
+        $deal = Deal::find($dealId);
+
+        return view('deal.edit',[
+            'deal' => $deal,
+            'contacts' => $contacts,
+            'deals' => $deals
+        ]);
+        
+    }
 }

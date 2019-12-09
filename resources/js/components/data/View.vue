@@ -12,9 +12,6 @@
       :fields="fields"
     >
       <!-- We are using utility class `text-nowrap` to help illustrate horizontal scrolling -->
-      <template v-slot:head(id)="scope">
-        <div class="text-nowrap">Mois de </div>
-      </template>
       <template v-slot:head()="scope">
         <div class="text-nowrap">{{ scope.label }}
         </div>
@@ -30,31 +27,35 @@
         stickyHeader: true,
         noCollapse: false,
         fields: [
-          { key: 'id', stickyColumn: true, isRowHeader: true, variant: 'primary' },
-          'Janvier',
-          'Fevrier',
-          { key: 'Mars', stickyColumn: true, variant: 'info' },
-          'Avril',
-          'Mai',
-          'Juin',
-          'Juillet',
-          'Aout',
-          'Septembre',
-          'Octobre',
-          'Novembre',
-          'Decembre'
+          { 
+            key: 'action', stickyColumn: true, isRowHeader: true, variant: 'primary' 
+          },
+          'January',
+          'February',
+          {
+            key: 'March', stickyColumn: true, variant: 'info' 
+          },
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
         ],
         items: [
-          { id: 1, Janvier: 0, Fevrier: 1, Mars: 2, Avril: 3, Mai: 4, Juin: 5, Juillet: 6, Aout: 7, Septembre: 8, Octobre: 9, Novembre: 10, Decembre: 11 },
-          { id: 2, Janvier: 0, Fevrier: 1, Mars: 2, Avril: 3, Mai: 4, Juin: 5, Juillet: 6, Aout: 7, Septembre: 8, Octobre: 9, Novembre: 10, Decembre: 11 },
-          { id: 3, Janvier: 0, Fevrier: 1, Mars: 2, Avril: 3, Mai: 4, Juin: 5, Juillet: 6, Aout: 7, Septembre: 8, Octobre: 9, Novembre: 10, Decembre: 11 },
-          { id: 4, Janvier: 0, Fevrier: 1, Mars: 2, Avril: 3, Mai: 4, Juin: 5, Juillet: 6, Aout: 7, Septembre: 8, Octobre: 9, Novembre: 10, Decembre: 11 },
-          { id: 5, Janvier: 0, Fevrier: 1, Mars: 2, Avril: 3, Mai: 4, Juin: 5, Juillet: 6, Aout: 7, Septembre: 8, Octobre: 9, Novembre: 10, Decembre: 11 },
-          { id: 6, Janvier: 0, Fevrier: 1, Mars: 2, Avril: 3, Mai: 4, Juin: 5, Juillet: 6, Aout: 7, Septembre: 8, Octobre: 9, Novembre: 10, Decembre: 11 },
-          { id: 7, Janvier: 0, Fevrier: 1, Mars: 2, Avril: 3, Mai: 4, Juin: 5, Juillet: 6, Aout: 7, Septembre: 8, Octobre: 9, Novembre: 10, Decembre: 11 },
-          { id: 8, Janvier: 0, Fevrier: 1, Mars: 2, Avril: 3, Mai: 4, Juin: 5, Juillet: 6, Aout: 7, Septembre: 8, Octobre: 9, Novembre: 10, Decembre: 11 },
-          { id: 9, Janvier: 0, Fevrier: 1, Mars: 2, Avril: 3, Mai: 4, Juin: 5, Juillet: 6, Aout: 7, Septembre: 8, Octobre: 9, Novembre: 10, Decembre: 11 },
-          { id: 10, Janvier: 0, Fevrier: 1, Mars: 2, Avril: 3, Mai: 4, Juin: 5, Juillet: 6, Aout: 7, Septembre: 8, Octobre: 9, Novembre: 10, Decembre: 11 }
+          { action: "Premier contact", January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11 },
+          { action: "Envoi d'une proposition", January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11 },
+          { action: "relance", January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11 },
+          { action: "Négociation", January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11 },
+          { action: "Refus", January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11 },
+          { action: "Abandon", January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11 },
+          { action: "Acceptation de l'offre", January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11 },
+          { action: "Montant"},
+          { action: "Acceptation de l'offre", January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11 },
+          { action: "Refus de l'offre", January: 0, February: 1, March: 2, April: 3, May: 4, June: 5, July: 6, August: 7, September: 8, October: 9, November: 10, December: 11 }
         ]
       }
     }

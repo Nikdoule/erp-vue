@@ -18,6 +18,7 @@ class BusinessDevlopperController extends Controller
     public function store()
     {
         return view('business-developper.create');
+        
     }
     public function show($developperId)
     {
@@ -25,7 +26,16 @@ class BusinessDevlopperController extends Controller
         $developper = Developper::find($developperId);
             
         return([
-            'developper'  => $developper,
+            'developper' => $developper,
+        ]);
+        
+    }
+    public function edit($developperId)
+    {
+        $developper = Developper::find($developperId);
+
+        return view('business-developper.edit',[
+            'developper' => $developper
         ]);
         
     }

@@ -97,8 +97,12 @@ class ProjectController extends Controller
                 ], 404);
             }
 
-            $project->name = $request->input('name');
-            $project->archived = $request->input('archived');
+            $request->validate([
+                'name'       => 'nullable',
+                'archived' => 'nullable'
+             ]);
+     
+             $project->update($request->all());
 
             if ($project->save()) {
                 return response()->json([

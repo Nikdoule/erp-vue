@@ -43,6 +43,10 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'developper_id' => ['required']
+        ]);
+        
         try {
             $contacts = Contact::create($request->all());
 
@@ -99,23 +103,30 @@ class ContactController extends Controller
                     'error' => "Contact" . $contactId . " not found",
                 ], 404);
             }
-            
-            $contact->first_name = $request->input('first_name');
-            $contact->last_name = $request->input('last_name');
-            $contact->title = $request->input('title');
-            $contact->email = $request->input('email');
-            $contact->company = $request->input('company');
-            $contact->siret = $request->input('siret');
-            $contact->adress = $request->input('adress');
-            $contact->zip_code = $request->input('zip_code');
-            $contact->city = $request->input('city');
-            $contact->country = $request->input('country');
-            $contact->laguage = $request->input('laguage');
-            $contact->naf = $request->input('naf');
-            $contact->phone = $request->input('phone');
-            $contact->kbis = $request->input('kbis');
-            $contact->mark = $request->input('mark');
-       
+            $request->validate([
+                'first_name' => 'nullable',
+                'last_name' => 'nullable',
+                'title' => 'nullable',
+                'email' => 'nullable',
+                'company' => 'nullable',
+                'siret' => 'nullable',
+                'adress' => 'nullable',
+                'zip_code' => 'nullable',
+                'time_zone' => 'nullable',
+                'money' => 'nullable',
+                'status' => 'nullable',
+                'city' => 'nullable',
+                'country' => 'nullable',
+                'laguage' => 'nullable',
+                'naf' => 'nullable',
+                'phone' => 'nullable',
+                'kbis' => 'nullable',
+                'mark' => 'nullable',
+                'developper_id' => 'nullable'
+
+             ]);
+             $contact->update($request->all());
+
             if ($contact->save()) {
                 return response()->json([
                     'contact'  => $contact,

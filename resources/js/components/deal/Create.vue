@@ -1,6 +1,6 @@
 <template>
 <div>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show" class="p-5">
+    <b-form @submit="onSubmit" @reset="onReset" class="p-5">
         <b-form-group id="designation" label="Désignation social:" label-for="designation">
             <b-form-input id="designation" v-model="form.designation" required placeholder="Entrez la désignation"></b-form-input>
         </b-form-group>
@@ -22,8 +22,9 @@
                 <option disabled value="">Choisissez</option>
                 <option :key="item.id" v-for="item in contacts" v-bind:value="item.id">{{item.first_name}}</option>
             </select>
+            <h6 v-if="errors.contact_id" style="color: red;">The contact is required</h6>
         </div>
-        <h1></h1>
+        
 
         <b-button @click="pushId" type="submit" variant="primary">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
@@ -51,7 +52,10 @@ export default {
                 contact_id: ''
 
             },
-            show: true,
+            errors: {
+
+            }
+            
         }
     },
     methods: {
@@ -60,19 +64,14 @@ export default {
         },
         onSubmit(evt) {
             evt.preventDefault()
-            alert(JSON.stringify(this.form))
-            axios.post('/api/1.0/deals',{
-                designation: this.form.designation,
-                reference: this.form.reference,
-                denomination: this.form.denomination,
-                amount: this.form.amount,
-                dropbox: this.form.dropbox,
-                contact_id: this.form.contact_id
-            });
-                
-        },
-        onGetter(evt) {
-            axios.get("/api/1.0/contacts");
+            axios.post('/api/1.0/deals',this.form)
+            .then(({data}) => {
+                location.href = 'deals';
+            })
+            .catch(error => {
+                this.errors = error.response.data.errors
+            })
+            
         },
         onReset(evt) {
             evt.preventDefault()
@@ -83,11 +82,6 @@ export default {
             this.form.denomination = ''
             this.form.amount = ''
             this.form.dropbox = ''
-            // Trick to reset/clear native browser form validation state
-            this.show = false
-            this.$nextTick(() => {
-                this.show = true
-            })
         }
     }
 }

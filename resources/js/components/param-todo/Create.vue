@@ -27,11 +27,10 @@ export default {
   methods : {
     onSubmit(evt) {
             evt.preventDefault()
-            alert(JSON.stringify(this.form))
-            axios.post('/api/1.0/parameters-todos',{
-                title: this.form.title,
-                description: this.form.description
-            });
+            axios.post('/api/1.0/parameters-todos', this.form)
+            .then(({data}) => {
+                location.href = 'parameters';
+            })
                 
         },
   }

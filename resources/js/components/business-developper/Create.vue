@@ -1,6 +1,6 @@
 <template>
 <div>
-    <b-form @submit.prevent="onSubmit" @reset="onReset" v-if="show" class="p-5">
+    <b-form @submit.prevent="onSubmit" @reset="onReset" class="p-5">
         <b-form-group id="lastName" label="Your Last Name:" label-for="lastName">
             <b-form-input id="lastName" v-model="form.last_name" required placeholder="Enter last name"></b-form-input>
         </b-form-group>
@@ -85,46 +85,39 @@ export default {
                 status: '',
                 email: ''
                 
-            },
-            show: true,
+            }
         }
     },
     methods: {
         onSubmit(evt){
                 evt.preventDefault()
-                alert(JSON.stringify(this.form))
-                axios.post('/api/1.0/business-developpers',{
-
-                    last_name: this.form.last_name,
-                    first_name: this.form.first_name,
-                    adress: this.form.adress,
-                    zip_code: this.form.zip_code,
-                    city: this.form.city,
-                    time_zone: this.form.time_zone,
-                    naf: this.form.naf,
-                    mark: this.form.mark,
-                    company: this.form.company,
-                    siret: this.form.siret,
-                    kbis: this.form.kbis,
-                    country: this.form.country,
-                    language: this.form.language,
-                    money: this.form.money,
-                    title: this.form.title,
-                    phone: this.form.phone,
-                    status: this.form.status,
-                    email: this.form.email
-                
+                axios.post('/api/1.0/business-developpers',this.form)
+                .then(({data}) => {
+                    location.href = 'business-developpers';
                 })
         },
         onReset(evt) {
             evt.preventDefault()
             // Reset our form values
-            this.form.projetcs = ''
-            
-            this.show = false
-            this.$nextTick(() => {
-                this.show = true
-            })
+            this.form.last_name = '',
+            this.form.first_name = '',
+            this.form.adress = '',
+            this.form.zip_code = '',
+            this.form.city = '',
+            this.form.time_zone = '',
+            this.form.naf = '',
+            this.form.mark = '',
+            this.form.company = '',
+            this.form.siret = '',
+            this.form.kbis = '',
+            this.form.country = '',
+            this.form.language = '',
+            this.form.money = '',
+            this.form.title = '',
+            this.form.phone = '',
+            this.form.status = '',
+            this.form.email = ''
+        
         }
     },
 }

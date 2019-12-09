@@ -67,7 +67,7 @@ class businessDevelopperController extends Controller
         try {
             $developper = Developper::find($developperId);
             if (empty($developper)) {
-                return response()->json([
+                response()->json([
                     'error' => "business developpers " . $developperId . " not found",
                 ], 404);
             }
@@ -97,22 +97,29 @@ class businessDevelopperController extends Controller
                     'error' => "business developper" . $developperId . " not found",
                 ], 404);
             }
-            $developper->first_name = $request->input('first_name');
-            $developper->last_name = $request->input('last_name');
-            $developper->title = $request->input('title');
-            $developper->email = $request->input('email');
-            $developper->company = $request->input('company');
-            $developper->siret = $request->input('siret');
-            $developper->adress = $request->input('adress');
-            $developper->zip_code = $request->input('zip_code');
-            $developper->city = $request->input('city');
-            $developper->country = $request->input('country');
-            $developper->laguage = $request->input('laguage');
-            $developper->naf = $request->input('naf');
-            $developper->phone = $request->input('phone');
-            $developper->kbis = $request->input('kbis');
-            $developper->mark = $request->input('mark');
-       
+            $request->validate([
+                'first_name' => 'nullable',
+                'last_name' => 'nullable',
+                'title' => 'nullable',
+                'email' => 'nullable',
+                'company' => 'nullable',
+                'siret' => 'nullable',
+                'adress' => 'nullable',
+                'zip_code' => 'nullable',
+                'time_zone' => 'nullable',
+                'status' => 'nullable',
+                'money' => 'nullable',
+                'city' => 'nullable',
+                'country' => 'nullable',
+                'laguage' => 'nullable',
+                'naf' => 'nullable',
+                'phone' => 'nullable',
+                'kbis' => 'nullable',
+                'mark' => 'nullable'
+
+             ]);
+             $developper->update($request->all());
+
             if ($developper->save()) {
                 return response()->json([
                     '$developper'  => $developper,

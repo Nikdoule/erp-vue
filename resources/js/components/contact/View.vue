@@ -8,7 +8,7 @@
     </thead>
     <tbody>
       <tr :key="item.id" v-for="item in contacts">
-        <th scope="row">{{item.id}}</th>
+        <th scope="row"><a v-bind:href="'contact/'+item.id" ><i class="fas fa-edit"></i></a></th>
         <td>{{item.first_name}} \ {{item.last_name}} \ {{item.mark}} \ {{item.company}}</td>
         <td>{{item.email}}</td>
         <td>{{item.phone}}</td>

@@ -43,6 +43,9 @@ class DealController extends Controller
      */
     public function store(Request $request)
     {
+        request()->validate([
+            'contact_id' => ['required']
+        ]);
         try {
 
             $deals = Deal::create($request->all());
@@ -99,12 +102,16 @@ class DealController extends Controller
                     'error' => "deal " . $dealId . " not found",
                 ], 404);
             }
+            $request->validate([
+                'denomination' => 'nullable',
+                'reference' => 'nullable',
+                'designation' => 'nullable',
+                'amount' => 'nullable',
+                'dropbox' => 'nullable',
+                'contact_id' => 'nullable'
 
-            $deal->designation = $request->input('designation');
-            $deal->denomination = $request->input('denomination');
-            $deal->amount = $request->input('amount');
-            $deal->reference = $request->input('reference');
-            $deal->dropbox = $request->input('dropbox');
+             ]);
+             $deal->update($request->all());
 
             if ($deal->save()) {
                 return response()->json([

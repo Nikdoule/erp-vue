@@ -24,4 +24,15 @@ class ContactController extends Controller
             'developpers' => $developpers
         ]);
     }
+    public function edit($contactId)
+    {
+        $developpers = Developper::all();
+        $contact = Contact::find($contactId);
+
+        return view('contact.edit',[
+            'contact' => $contact,
+            'developpers' => $developpers
+        ]);
+        
+    }
 }

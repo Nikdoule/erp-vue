@@ -1,6 +1,6 @@
 <template>
 <div>
-    <b-form @submit="onSubmit" @reset="onReset" v-if="show" class="p-5">
+    <b-form @submit="onSubmit" @reset="onReset" class="p-5">
         <b-form-group id="lastName" label="Your Last Name:" label-for="lasName">
             <b-form-input id="lastName" v-model="form.last_name" required placeholder="Enter last name"></b-form-input>
         </b-form-group>
@@ -55,16 +55,21 @@
         <b-form-group id="status" label="Your Status:" label-for="status">
             <b-form-input id="status" v-model="form.status" required placeholder="Enter status"></b-form-input>
         </b-form-group>
+        <b-form-group id="origin" label="the origin of the contact:" label-for="origin">
+            <b-form-input id="status" v-model="form.origin" required placeholder="Enter origin"></b-form-input>
+        </b-form-group>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Select Developper</label>
             <select class="form-control" id="exampleFormControlSelect1" v-model="form.developper_id">
                 <option disabled value="">Choisissez</option>
                 <option :key="item.id" v-for="item in developpers" v-bind:value="item.id">{{item.first_name}}</option>
             </select>
+            <h6 v-if="errors.developper_id" style="color: red;">The developper is required</h6>
         </div>
         <b-button @click="pushId" type="submit" variant="primary">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
+
 
 </div>
 </template>
@@ -98,11 +103,12 @@ export default {
                 status: '',
                 money: '',
                 time_zone: '',
+                origin: '',
                 developper_id: ''
             },
-            show: true,
+            errors: {
 
-            selected: [], // Must be an array reference!
+            }
         }
     },
     methods: {
@@ -111,59 +117,39 @@ export default {
         },
         onSubmit(evt) {
             evt.preventDefault()
-            alert(JSON.stringify(this.form))
-            axios.post('/api/1.0/contacts', {
-                language: this.form.language,
-                phone: this.form.phone,
-                last_name: this.form.last_name,
-                first_name: this.form.first_name,
-                title: this.form.title,
-                naf: this.form.naf,
-                company: this.form.company,
-                siret: this.form.siret,
-                kbis: this.form.kbis,
-                country: this.form.country,
-                adress: this.form.adress,
-                zip_code: this.form.zip_code,
-                city: this.form.city,
-                email: this.form.email,
-                mark: this.form.mark,
-                status: this.form.status,
-                money: this.form.money,
-                time_zone: this.form.time_zone,
-                developper_id: this.form.developper_id
-
+            axios.post('/api/1.0/contacts',this.form)
+            .then(({data}) => {
+                location.href = 'contacts';
             })
-
-        },
-        onGetter(evt) {
-            evt.preventDefault()
-            axios.get('/api/1.0/developpers', {
-
+            .catch(error => {
+                this.errors = error.response.data.errors
             })
+            
         },
         onReset(evt) {
             evt.preventDefault()
             // Reset our form values
-            this.form.email = ''
             this.form.last_name = ''
             this.form.first_name = ''
+            this.form.adress = ''
+            this.form.zip_code = ''
+            this.form.city = ''
+            this.form.time_zone = ''
             this.form.naf = ''
-            this.form.statut = ''
-            this.form.title = ''
-            this.form.kbis = ''
             this.form.mark = ''
             this.form.company = ''
             this.form.siret = ''
-            this.form.adress = ''
-            this.form.zip = ''
-            this.form.city = ''
+            this.form.kbis = ''
+            this.form.country = ''
             this.form.language = ''
-            // Trick to reset/clear native browser form validation state
-            this.show = false
-            this.$nextTick(() => {
-                this.show = true
-            })
+            this.form.money = ''
+            this.form.title = ''
+            this.form.phone = ''
+            this.form.status = ''
+            this.form.email = ''
+            this.form.origin
+            this.form.developper_id = ''
+            
         }
     }
 }

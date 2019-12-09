@@ -94,9 +94,12 @@ class ParamContactController extends Controller
                     'error' => "param_contact" . $param_contactId . " not found",
                 ], 404);
             }
-            $param_contact->title = $request->input('title');
-            $param_contact->description = $request->input('description');
-            
+            $request->validate([
+                'title' => 'nullable',
+                'description' => 'nullable',
+
+             ]);
+             $param_contact->update($request->all());
        
             if ($param_contact->save()) {
                 return response()->json([

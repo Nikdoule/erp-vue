@@ -15,15 +15,14 @@ Route::middleware('auth')->group(function(){
     //view
     Route::get('/parameters', 'ParameterController@index');
 
-    Route::get('/monitoring-graphical', 'MonitoringController@index');
+    Route::get('/', 'MonitoringController@index');
 
     Route::get('/deals', 'DealController@index');
 
     Route::get('/contacts', 'ContactController@index');
 
-    Route::get('/business-developper', 'BusinessDevlopperController@index');
+    Route::get('/business-developpers', 'BusinessDevlopperController@index');
 
-    Route::get('/business-developper/{developperId}', 'BusinessDevlopperController@show');
     //create
     Route::get('/create-business-developper', 'BusinessDevlopperController@store');
 
@@ -36,6 +35,12 @@ Route::middleware('auth')->group(function(){
     Route::get('/create-contact-parameter', 'ParamContactController@store');
     
     Route::get('/create-todo-parameter', 'ParamTodoController@store');
+    //edit
+    Route::get('/business-developper/{developperId}', 'BusinessDevlopperController@edit');
+
+    Route::get('/contact/{contactId}', 'ContactController@edit');
+
+    Route::get('/deal/{dealId}', 'DealController@edit');
     //auth
     Route::get('comptes', function(){
 

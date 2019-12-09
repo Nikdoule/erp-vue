@@ -6,7 +6,7 @@
         </li>
     </div>
     <div @mouseover="businessDevelopperShow" @mouseleave="businessDevelopperHidden" class="d-flex flex-column">
-        <a id="developper" href="/business-developper" class="d-flex a-item">
+        <a id="developper" href="/business-developpers" class="d-flex a-item">
             <span class="span-item"><i class="fas fa-user-tie ml-auto mt-auto mb-auto"></i>Business Developper</span>
         </a>
         <a href="/create-business-developper" class="a-item d-none" v-bind:class="[countA == true ? 'd-flex' : countA == false]">
@@ -39,9 +39,12 @@
         <a href="/create-contact-parameter" class="a-item d-none" v-bind:class="[countD == true ? 'd-flex' : countD == false]">
             <span class="span-item"><i class="fas fa-users ml-auto mt-auto mb-auto"></i>Create a contact parameter</span>
         </a>
+        <a href="/create-todo-parameter" class="a-item d-none" v-bind:class="[countD == true ? 'd-flex' : countD == false]">
+            <span class="span-item"><i class="fas fa-users ml-auto mt-auto mb-auto"></i>Create a todo parameter</span>
+        </a>
     </div>
     <div class="d-flex flex-column">
-        <a href="/monitoring-graphical" class="d-flex a-item">
+        <a href="/" class="d-flex a-item">
             <span class="span-item"><i class="fas fa-chart-line ml-auto mt-auto mb-auto"></i>Monitory Graphical</span>
         </a>
     </div>

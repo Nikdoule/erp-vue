@@ -45,8 +45,10 @@ Vue.component('create-contact', require('./components/contact/Create.vue').defau
 Vue.component('create-param-action', require('./components/param-action/Create.vue').default);
 Vue.component('create-param-contact', require('./components/param-contact/Create.vue').default);
 Vue.component('create-param-todo', require('./components/param-todo/Create.vue').default);
-
-
+//edit
+Vue.component('edit-business-developper', require('./components/business-developper/Edit.vue').default);
+Vue.component('edit-contact', require('./components/contact/Edit.vue').default);
+Vue.component('edit-deal', require('./components/deal/Edit.vue').default);
 //menu
 Vue.component('menu-vertical', require('./components/menu/Menu.vue').default);
 

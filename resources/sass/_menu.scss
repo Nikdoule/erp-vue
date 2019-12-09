@@ -11,8 +11,7 @@ a{
     text-decoration: none !important;
 }
 .a-item, .li-item{
-    margin: auto;
-    width: 260px;
+    width: 300px;
     height: 65px;
     text-decoration: none !important;
     color:white;
@@ -110,4 +109,16 @@ a{
     margin-left: 10px;
     font-weight: 700;
     color: rgb(255, 255, 255, 0.767);
+}
+.dropdown-menu{
+    background-color: #052c3b !important;
+}
+.dropdown-item:hover{
+    background-color: #052c3b !important;
+}
+.text-nowrap{
+    font-weight: 700 !important;
+}
+.table-primary{
+    font-weight: 100 !important;
 }

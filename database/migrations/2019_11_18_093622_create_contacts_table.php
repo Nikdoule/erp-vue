@@ -32,6 +32,7 @@ class CreateContactsTable extends Migration
             $table->boolean('kbis');
             $table->integer('siret');
             $table->string('time_zone');
+            $table->string('origin');
             $table->integer('zip_code');
             $table->unsignedBigInteger('developper_id');
             $table->timestamps();

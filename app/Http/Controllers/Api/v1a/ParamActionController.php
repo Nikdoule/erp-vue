@@ -97,9 +97,12 @@ class ParamActionController extends Controller
                     'error' => "param_action" . $param_actionId . " not found",
                 ], 404);
             }
-            $param_action->title = $request->input('title');
-            $param_action->description = $request->input('description');
-            
+            $request->validate([
+                'title' => 'nullable',
+                'description' => 'nullable',
+
+             ]);
+             $param_action->update($request->all());
        
             if ($param_action->save()) {
                 return response()->json([

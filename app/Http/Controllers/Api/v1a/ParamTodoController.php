@@ -97,9 +97,12 @@ class ParamTodoController extends Controller
                     'error' => "param_todo" . $param_todoId . " not found",
                 ], 404);
             }
-            $param_todo->title = $request->input('title');
-            $param_todo->description = $request->input('description');
-            
+            $request->validate([
+                'title' => 'nullable',
+                'description' => 'nullable',
+
+             ]);
+             $param_todo->update($request->all());
        
             if ($param_todo->save()) {
                 return response()->json([

@@ -31,8 +31,7 @@ a {
 
 .a-item,
 .li-item {
-  margin: auto;
-  width: 260px;
+  width: 300px;
   height: 65px;
   text-decoration: none !important;
   color: white;
@@ -131,6 +130,22 @@ a {
   color: rgba(255, 255, 255, 0.767);
 }
 
+.dropdown-menu {
+  background-color: #052c3b !important;
+}
+
+.dropdown-item:hover {
+  background-color: #052c3b !important;
+}
+
+.text-nowrap {
+  font-weight: 700 !important;
+}
+
+.table-primary {
+  font-weight: 100 !important;
+}
+
 .table-radius {
   box-shadow: 2px 0px 20px #c4c4c4;
   border-radius: 10px;
@@ -138,12 +153,20 @@ a {
 }
 
 .topTilte {
-  width: 0px;
+  width: 125px;
+}
+
+.fa-edit {
+  color: blue;
 }
 
 .form-shadow {
   box-shadow: 2px 0px 20px #c4c4c4;
   padding: 20px;
+}
+
+.navbar {
+  background-color: #052c3b !important;
 }
 
 /*!

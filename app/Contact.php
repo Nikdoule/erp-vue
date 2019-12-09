@@ -25,12 +25,9 @@ class Contact extends Model
         'status',
         'money',
         'time_zone',
-        'developper_id'
+        'developper_id',
+        'origin'
     ];
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
     public function developper()
     {
         return $this->belongsTo(Developper::class);
