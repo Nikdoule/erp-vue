@@ -89,15 +89,16 @@
                     
                 },
             }
-        },mounted(){
-            console.log(window.location.href.substr(-1))
+        },
+        mounted(){
+            console.log(this.developper.id)
         },
         methods: {
             
         onSubmit(evt){
                 evt.preventDefault()
 
-                    axios.put('/api/1.0/business-developpers/'+window.location.href.substr(-1),this.form)
+                    axios.put('/api/1.0/business-developpers/'+this.developper.id,this.form)
                     .then(({data}) => {
                     location.href = '/business-developpers';
                 });

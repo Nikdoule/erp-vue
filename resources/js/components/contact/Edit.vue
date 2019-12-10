@@ -71,58 +71,59 @@
 </template>
 
 <script>
-    export default {
-        props : ['contact', 'developpers'],
-        data() {
-            return {
-                item: [
-                    {
-                        id:''
-                    }
-                ],
-                form: {
-                    email: '',
-                    last_name: '',
-                    first_name: '',
-                    naf: '',
-                    company: '',
-                    siret: '',
-                    kbis: '',
-                    country: '',
-                    adress: '',
-                    phone: '',
-                    zip_code: '',
-                    city: '',
-                    language: '',
-                    title: '',
-                    mark: '',
-                    status: '',
-                    money: '',
-                    time_zone: '',
-                    developper_id: ''
-                },
-                errors: {
-
+export default {
+    props : ['contact', 'developpers'],
+    data() {
+        return {
+            item: [
+                {
+                    id:''
                 }
+            ],
+            form: {
+                email: '',
+                last_name: '',
+                first_name: '',
+                naf: '',
+                company: '',
+                siret: '',
+                kbis: '',
+                country: '',
+                adress: '',
+                phone: '',
+                zip_code: '',
+                city: '',
+                language: '',
+                title: '',
+                mark: '',
+                status: '',
+                money: '',
+                time_zone: '',
+                developper_id: ''
+            },
+            errors: {
+
             }
-        },mounted(){
-            console.log(window.location.href.substr(-1))
-        },
-        methods: {
+        }
+    },
+    mounted(){
+            console.log(this.contact.id)
+    },
+    methods: {
         pushId: function () {
             this.item.push(this.form.developper_id)
         },
         onSubmit(evt){
-                evt.preventDefault()
-                    axios.put('/api/1.0/contacts/'+window.location.href.substr(-1), this.form)
-                    .then(({data}) => {
-                        location.href = '/contacts';
-                    })
-                    .catch(error => {
-                        this.errors = error.response.data.errors
-                    })
+            evt.preventDefault()
+                axios.put('/api/1.0/contacts/'+this.contact.id, this.form)
+                .then(({data}) => {
+                    location.href = '/contacts';
+                })
+                .catch(error => {
+                    this.errors = error.response.data.errors
+                })
 
-                
+                    
         },
         onReset(evt) {
             evt.preventDefault()
@@ -146,11 +147,11 @@
             this.form.status = '',
             this.form.email = ''
             this.form.developper_id = ''
-            
+                
         }
     },
         
-    }
+}
 </script>
 
 <style lang="scss" scoped>

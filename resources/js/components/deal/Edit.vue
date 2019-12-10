@@ -57,13 +57,16 @@ export default {
             
         }
     },
+    mounted(){
+            console.log(this.deal.id)
+        },
     methods: {
         pushId: function () {
             this.item.push(this.form.contact_id)
         },
         onSubmit(evt){
                 evt.preventDefault()
-                    axios.put('/api/1.0/deals/'+window.location.href.substr(-1), this.form)
+                    axios.put('/api/1.0/deals/'+this.deal.id, this.form)
                     .then(({data}) => {
                     location.href = '/deals';
                 });
