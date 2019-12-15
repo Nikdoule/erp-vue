@@ -8,8 +8,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr :key="item.id" v-for="item in deals" class="" v-bind:class="[item.action == 'Terminer' ? 'coolGrenn' : item.action == 'Refuser' ?  'coolRed' : '']">
-                <th scope="row"><a v-bind:href="'deal/'+item.id" ><i class="fas fa-edit"></i></a></th>
+            <tr :key="item.id" v-for="item in deals">
+                <th scope="row">
+                    <a v-bind:href="'deal/'+item.id" >
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a v-bind:href="'deal/'+item.id+'/create-action'" >
+                        <i class="fas fa-hammer"></i>
+                    </a>
+                    <a v-bind:href="'deal/'+item.id+'/view-action'" >
+                        <i class="far fa-eye"></i>
+                    </a>
+                </th>
                 <td>{{item.created_at}}</td>
                 <td>{{item.reference}}</td>
                 <td>{{item.designation}}</td>

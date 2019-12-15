@@ -16,18 +16,17 @@ class TaskController extends Controller
      */
     public function index($projectId)
     {
+        $tasks = Task::all();
         try {
-            $tasks = Task::all();
-
-            if (!$tasks->isEmpty()) {
+            $project = Project::find($projectId);
+             if (empty($project)) {
                 return response()->json([
-                    'tasks'  => $tasks,
-                ], 200);
-            } else {
-                return response()->json([
-                    'error' => "No Task found",
+                    'error' => "Project " . $id . " not found",
                 ], 404);
-            }
+             }
+             return response()->json([
+                 'tasks'  => $tasks,
+             ], 200);
         } catch (Exception $ex) {
             return response()->json([
                 'error' => "Can't list Tasks",

@@ -18,7 +18,7 @@ class DealController extends Controller
     {
         try {
             $deals = Deal::all();
-
+            
             if (!$deals->isEmpty()) {
                 return response()->json([
                     'deals'  => $deals,

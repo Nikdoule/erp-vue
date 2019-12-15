@@ -20,6 +20,7 @@ class CreateActionsTable extends Migration
             $table->dateTime('stopped_at');
             $table->unsignedBigInteger('deal_id');
             $table->timestamps();
+            $table->foreign('deal_id')->references('id')->on('deals');
         });
     }
 

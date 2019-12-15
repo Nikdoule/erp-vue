@@ -93,29 +93,29 @@ export default {
                 evt.preventDefault()
                 axios.post('/api/1.0/business-developpers',this.form)
                 .then(({data}) => {
-                    location.href = 'business-developpers';
+                    location.href = '/business-developpers';
                 })
         },
         onReset(evt) {
             evt.preventDefault()
             // Reset our form values
-            this.form.last_name = '',
-            this.form.first_name = '',
-            this.form.adress = '',
-            this.form.zip_code = '',
-            this.form.city = '',
-            this.form.time_zone = '',
-            this.form.naf = '',
-            this.form.mark = '',
-            this.form.company = '',
-            this.form.siret = '',
-            this.form.kbis = '',
-            this.form.country = '',
-            this.form.language = '',
-            this.form.money = '',
-            this.form.title = '',
-            this.form.phone = '',
-            this.form.status = '',
+            this.form.last_name = ''
+            this.form.first_name = ''
+            this.form.adress = ''
+            this.form.zip_code = ''
+            this.form.city = ''
+            this.form.time_zone = ''
+            this.form.naf = ''
+            this.form.mark = ''
+            this.form.company = ''
+            this.form.siret = ''
+            this.form.kbis = ''
+            this.form.country = ''
+            this.form.language = ''
+            this.form.money = ''
+            this.form.title = ''
+            this.form.phone = ''
+            this.form.status = ''
             this.form.email = ''
         
         }

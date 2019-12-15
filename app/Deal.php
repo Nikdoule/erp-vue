@@ -23,10 +23,12 @@ class Deal extends Model
     {
         return $this->hasMany(Action::class);
     }
+
     public function developper()
     {
         return $this->belongsTo(Developper::class);
     }
+
 
 
 }

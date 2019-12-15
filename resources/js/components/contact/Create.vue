@@ -119,7 +119,7 @@ export default {
             evt.preventDefault()
             axios.post('/api/1.0/contacts',this.form)
             .then(({data}) => {
-                location.href = 'contacts';
+                location.href = '/contacts';
             })
             .catch(error => {
                 this.errors = error.response.data.errors

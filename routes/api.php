@@ -28,7 +28,7 @@ Route::prefix('1.0')->group(function () {
     //     'as' => 'projects.archive'
     // ]);
 
-    // Route::delete('/projects/{projectId}/tasks', [
+    // Route::get('/projects/{projectId}/tasks', [
     //     'uses' => '\App\Http\Controllers\Api\v1a\TaskController@destroyByProject',
     //     'as' => 'projects.tasks.destroy_by_project'
     // ]);
@@ -44,7 +44,7 @@ Route::prefix('1.0')->group(function () {
 
     Route::apiResource('contacts', 'Api\v1a\ContactController');
 
-    Route::apiResource('business-developpers/{developperId}/deals/{dealId}/actions', 'Api\v1a\ActionController');
+    Route::apiResource('deals/{dealId}/actions', 'Api\v1a\ActionController');
 
     Route::apiResource('parameters-actions', 'Api\v1a\ParamActionController');
 

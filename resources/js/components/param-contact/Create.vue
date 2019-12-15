@@ -29,7 +29,7 @@ export default {
             evt.preventDefault()
             axios.post('/api/1.0/parameters-contacts',this.form)
             .then(({data}) => {
-                location.href = 'parameters';
+                location.href = '/parameters';
             })
                 
         },

@@ -60,7 +60,7 @@
             <label for="exampleFormControlSelect1">Select Developper</label>
             <select class="form-control" id="exampleFormControlSelect1" v-model="form.developper_id">
                 <option disabled value="">Choisissez</option>
-                <option :key="item.id" v-for="item in developpers" v-bind:value="item.id">{{item.first_name}}</option>
+                <option :key="item.id" v-for="item in developpers" v-bind:value="item.id">{{item.first_name}} {{item.last_name}}</option>
             </select>
             <h6 v-if="errors.developper_id" style="color: red;">The developper is required</h6>
         </div>

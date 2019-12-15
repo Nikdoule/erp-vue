@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h2 class="text-center">Edit the deal référence {{deal.reference}} of sir {{contacts[deal.contact_id-1].last_name}}</h2>
+    <h2 class="text-center">Edit the deal référence {{deal.reference}} of sir {{contacts[deal.contact_id-1].last_name}} {{contacts[deal.contact_id-1].first_name}}</h2>
     <b-form @submit="onSubmit" @reset="onReset" class="p-5">
         <b-form-group id="designation" label="Désignation social:" label-for="designation">
             <b-form-input id="designation" v-model="form.designation" required placeholder="Entrez la désignation"></b-form-input>
@@ -21,7 +21,7 @@
             <label for="exampleFormControlSelect1">Select the Contact</label>
             <select class="form-control" id="exampleFormControlSelect1" v-model="form.contact_id">
                 <option disabled value="">Choisissez</option>
-                <option :key="item.id" v-for="item in contacts" v-bind:value="item.id">{{item.first_name}}</option>
+                <option :key="item.id" v-for="item in contacts" v-bind:value="item.id">{{item.last_name}} {{item.first_name}}</option>
             </select>
             <h6 v-if="errors.contact_id" style="color: red;">The contact is required</h6>
         </div>

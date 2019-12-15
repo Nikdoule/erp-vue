@@ -82,6 +82,8 @@
             @yield('edit-developper')
             @yield('edit-contact')
             @yield('edit-deal')
+            @yield('create-action')
+            @yield('view-action')
         </main>
     </div>
     <script src="https://kit.fontawesome.com/536fe6e8c5.js" crossorigin="anonymous"></script>

@@ -31,7 +31,6 @@
     </b-form>
 </div>
 </template>
-
 <script>
 export default {
     props: ["contacts"],
@@ -66,7 +65,7 @@ export default {
             evt.preventDefault()
             axios.post('/api/1.0/deals',this.form)
             .then(({data}) => {
-                location.href = 'deals';
+                location.href = '/deals';
             })
             .catch(error => {
                 this.errors = error.response.data.errors

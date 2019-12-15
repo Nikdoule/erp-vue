@@ -14,20 +14,19 @@ class ActionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($dealId, $developperId)
+    public function index($dealId)
     {
+        $actions = Action::all();
         try {
-            $actions = Action::all();
-
-            if (!$actions->isEmpty()) {
+            $deal = Deal::find($dealId);
+             if (!empty($deal)) {
                 return response()->json([
-                    'actions'  => $actions,
+                    'actions' => $actions
                 ], 200);
-            } else {
-                return response()->json([
-                    'error' => "No action found",
-                ], 404);
-            }
+             }
+             return response()->json([
+                'error' => "deal " . $dealId . " not found",
+             ], 404);
         } catch (Exception $ex) {
             return response()->json([
                 'error' => "Can't list actions",
@@ -40,7 +39,7 @@ class ActionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $dealId, $developperId)
+    public function store(Request $request, $dealId)
     {
         try {
             $deal = Deal::find($dealId);
@@ -75,7 +74,7 @@ class ActionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($dealId, $actionId, $developperId)
+    public function show($dealId, $actionId)
     {
         try {
             $action = Action::find($actionId);
@@ -100,7 +99,7 @@ class ActionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $projectId, $actionId, $developperId)
+    public function update(Request $request, $actionId, $dealId)
     {
         try {
             $action = Action::find($actionId);
@@ -109,10 +108,12 @@ class ActionController extends Controller
                     'error' => "action " . $actionId . " not found",
                 ], 404);
             }
-
-            $action->name = $request->input('name');
-            $action->started_at = $request->input('started_at');
-            $action->stopped_at = $request->input('stopped_at');
+            $request->validate([
+                'name' => 'nullable',
+                'started_at' => 'nullable',
+                'stopped_at' => 'nullable',
+             ]);
+             $action->update($request->all());
 
             if ($action->save()) {
                 return response()->json([

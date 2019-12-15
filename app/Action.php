@@ -15,4 +15,6 @@ class Action extends Model
     {
         return $this->belongsTo(Deal::class);
     }
+    
+    
 }
