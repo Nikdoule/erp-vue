@@ -9,7 +9,9 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
-$blue: #3490dc;
+$white: #ffff;
+$blue: blue;
+$darkBlue: #04222e;
 $indigo: #6574cd;
 $purple: #9561e2;
 $pink: #f66d9b;
@@ -19,10 +21,13 @@ $yellow: #ffed4a;
 $green: #38c172;
 $teal: #4dc0b5;
 $cyan: #6cb2eb;
+$transpBlack: rgba(0, 0, 0, 0.322);
+
 .coolGrenn{
 
     background:#bbe1bd;
 } 
 .coolRed{
+
     background:#fccac7;
 }

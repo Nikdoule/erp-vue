@@ -16,10 +16,9 @@ class ActionController extends Controller
      */
     public function index($dealId)
     {
-        $actions = Action::all();
         try {
-            $deal = Deal::find($dealId);
-             if (!empty($deal)) {
+            $actions = Deal::find($dealId)->actions()->get();
+             if (!empty($dealId)) {
                 return response()->json([
                     'actions' => $actions
                 ], 200);

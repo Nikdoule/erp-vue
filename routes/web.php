@@ -13,40 +13,33 @@
 
 Route::middleware('auth')->group(function(){
     //view
-    Route::get('/parameters', 'ParameterController@index');
 
     Route::get('/', 'MonitoringController@index')->middleware('verified');
 
-    Route::get('/deals', 'DealController@index')->middleware('verified');
-
-    Route::get('/contacts', 'ContactController@index')->middleware('verified');
-
-    Route::get('/business-developpers', 'BusinessDevlopperController@index')->middleware('verified');
-
-    Route::get('deal/{dealId}/view-action', 'ActionController@show')->middleware('verified');
+    Route::get('/deals/{dealId}/action', 'ActionController@show')->middleware('verified');
 
     //create
-    Route::get('/create-business-developper', 'BusinessDevlopperController@store')->middleware('verified');
-
-    Route::get('/create-deal', 'DealController@store')->middleware('verified');
-
-    Route::get('/create-contact', 'ContactController@store')->middleware('verified');
-
-    Route::get('/create-action-parameter', 'ParamActionController@store')->middleware('verified');
-
-    Route::get('/create-contact-parameter', 'ParamContactController@store')->middleware('verified');
     
-    Route::get('/create-todo-parameter', 'ParamTodoController@store')->middleware('verified');
+    Route::get('/deals/{dealId}/action/create', 'ActionController@store')->middleware('verified');
+    
+    //resources
+    Route::Resource('/business-developpers', 'BusinessDevlopperController')->middleware('verified');
+    
+    Route::Resource('/contacts', 'ContactController')->middleware('verified');
 
-    Route::get('deal/{dealId}/create-action', 'ActionController@store')->middleware('verified');
-    //edit
-    Route::get('/business-developper/{developperId}', 'BusinessDevlopperController@edit')->middleware('verified');
+    Route::Resource('/deals', 'DealController')->middleware('verified');
 
-    Route::get('/contact/{contactId}', 'ContactController@edit')->middleware('verified');
+    Route::Resource('/action-parameter', 'ParamActionController')->middleware('verified');
 
-    Route::get('/deal/{dealId}', 'DealController@edit')->middleware('verified');
+    Route::Resource('/contact-parameter', 'ParamContactController')->middleware('verified');
+    
+    Route::Resource('/todo-parameter', 'ParamTodoController')->middleware('verified');
+
+    Route::Resource('/parameters', 'ParameterController');
+
     //auth
-    Route::get('comptes', function(){
+    Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
+        Route::resource('users', 'UsersController');
 
     });
 

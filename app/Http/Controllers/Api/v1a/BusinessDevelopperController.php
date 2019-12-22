@@ -116,7 +116,6 @@ class businessDevelopperController extends Controller
                 'phone' => 'nullable',
                 'kbis' => 'nullable',
                 'mark' => 'nullable'
-
              ]);
              $developper->update($request->all());
 

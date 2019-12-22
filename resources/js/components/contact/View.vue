@@ -8,7 +8,7 @@
     </thead>
     <tbody>
       <tr :key="item.id" v-for="item in contacts">
-        <th scope="row"><a v-bind:href="'contact/'+item.id" ><i class="fas fa-edit"></i></a></th>
+        <th scope="row"><a v-bind:href="'contacts/'+item.id" ><i class="fas fa-edit"></i></a></th>
         <td>{{item.first_name}} \ {{item.last_name}} \ {{item.mark}} \ {{item.company}}</td>
         <td>{{item.email}}</td>
         <td>{{item.phone}}</td>
@@ -37,22 +37,22 @@ export default {
   data() {
     return {
       fields: [
-        "Name_Mark_Dénomination",
+        "Name / Mark / Dénomination",
         "Email",
         "Phone",
         "Adress",
-        "Zip_Code",
+        "Zip Code",
         "City",
         "Naf",
         "Siret",
         "kbis",
         "Country",
         "Language",
-        "money",
-        "time_zone",
+        "Money",
+        "Time Zone",
         "Title",
-        "Last_name",
-        "First_name",
+        "Last Name",
+        "First Name",
         "Status"
       ]
     };

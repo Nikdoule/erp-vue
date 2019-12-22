@@ -57,6 +57,7 @@
                                     style="display: none;">
                                     @csrf
                                 </form>
+                                <a href="{{ route('admin.users.index')}}" class="dropdown-item text-white">Liste des utilisateurs</a>
                             </div>
                         </li>
                         @endguest

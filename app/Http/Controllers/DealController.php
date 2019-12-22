@@ -18,14 +18,14 @@ class DealController extends Controller
             'contacts' => $contacts
         ]);
     }
-    public function store()
+    public function create()
     {
         $contacts = Contact::all();
         return view('deal.create',[
             'contacts' => $contacts
         ]);
     }
-    public function edit($dealId)
+    public function show($dealId)
     {
         
         $contacts = Contact::all();

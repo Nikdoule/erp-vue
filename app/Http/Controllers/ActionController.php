@@ -20,7 +20,7 @@ class ActionController extends Controller
     public function show($dealId)
     {
         $deal = Deal::find($dealId);
-        $actions = Action::all();
+        $actions = Deal::find($dealId)->actions()->get();
 
         return view('action.view',[
             'deal' => $deal,

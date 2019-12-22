@@ -2,8 +2,8 @@
 
 @section('view-parameter')
 <section class="mt-5">
-    <h2 class="text-center">parameters</h2>
-    <div class="d-flex mt-5">
+    <h2 class="text-center">Parameters</h2>
+    <div class="d-flex mt-5 form-shadow bg-white table-radius">
         <div class="col-4 pr-0 pl-0">
             <view-param-action :param_actions="{{ $param_actions }}"></view-param-action>
         </div>

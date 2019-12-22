@@ -16,7 +16,7 @@ class ContactController extends Controller
             'contacts' => $contacts
         ]);
     }
-    public function store()
+    public function create()
     {
         $developpers = Developper::all();
         
@@ -24,7 +24,7 @@ class ContactController extends Controller
             'developpers' => $developpers
         ]);
     }
-    public function edit($contactId)
+    public function show($contactId)
     {
         $developpers = Developper::all();
         $contact = Contact::find($contactId);

@@ -16,7 +16,7 @@
     </li>
         <transition name="bounce" class="d-flex">
             <div v-if="show" class="flex-column">
-                <a v-bind:href="'/create-business-developper'" class=" d-flex li-item a-sitem">
+                <a v-bind:href="'/business-developpers/create'" class=" d-flex li-item a-sitem">
                     <span class="span-item"><i class="fas fa-user-tie mr-2"></i>Create a business developper</span>
                 </a>
                 <a href="/business-developpers" class=" d-flex li-item a-sitem">
@@ -33,7 +33,7 @@
        </li>
        <transition name="bounce" class="d-flex">
             <div class="li-item flex-column" v-if="show2">
-                <a href="/create-contact" class=" d-flex li-item a-sitem">
+                <a href="/contacts/create" class=" d-flex li-item a-sitem">
                     <span class="span-item"><i class="fas fa-user-tie mr-2"></i>Create a contact</span>
                 </a>
                 <a href="/contacts" class=" d-flex li-item a-sitem">
@@ -50,7 +50,7 @@
         </li>
         <transition name="bounce" class="d-flex">
             <div class="li-item flex-column" v-if="show3">
-                <a href="/create-deal" class=" d-flex li-item a-sitem">
+                <a href="/deals/create" class=" d-flex li-item a-sitem">
                     <div class="a-sitem d-flex li-item">
                         <span class="span-item"><i class="fas fa-search-dollar mr-2"></i>Create a deal</span>
                     </div>
@@ -74,13 +74,13 @@
                         <span class="span-item"><i class="fas fa-cogs text-white mr-2"></i> View parameters</span>
                     </div>
                 </a>
-                <a href="/create-action-parameter" class="d-flex li-item a-sitem">
+                <a href="/action-parameter/create" class="d-flex li-item a-sitem">
                     <span class="span-item"><i class="fas fa-hammer mr-2 text-white"></i>Create a action parameter</span>
                 </a>
-                <a href="/create-contact-parameter" class="d-flex li-item a-sitem">
+                <a href="/contact-parameter/create" class="d-flex li-item a-sitem">
                     <span class="span-item"><i class="fas fa-users mr-2"></i>Create a contact parameter</span>
                 </a>
-                <a href="/create-todo-parameter" class="d-flex li-item a-sitem">
+                <a href="/todo-parameter/create" class="d-flex li-item a-sitem">
                     <span class="span-item"><i class="far fa-list-alt mr-2"></i>Create a todo parameter</span>
                 </a>
             </div>

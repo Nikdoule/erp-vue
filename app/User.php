@@ -39,6 +39,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    //if name column role is admin the current user can edit settings
+    public function isAdmin()
+    {
+        return $this->roles()->where('name', 'admin')->first();
+    }
+
     public function contacts() 
     {
 

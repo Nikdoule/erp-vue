@@ -6,32 +6,32 @@ a{
     text-decoration: none !important;
 }
 .a-item{
-    background-color: #04222e;
-    border: 1px solid rgba(0, 0, 0, 0.322);
+    background-color: $darkBlue;
+    border: 1px solid $transpBlack;
     width: 300px;
     height: 65px;
     text-decoration: none !important;
-    color:white;
+    color: $white;
 }
 .a-sitem{
     background-color: #052c3b;
-    border: 1px solid rgba(0, 0, 0, 0.322);
+    border: 1px solid $transpBlack;
     width: 300px;
     height: 65px;
     text-decoration: none !important;
-    color:white;
+    color:$white;
 }
 .a-sitem:hover {
-    color: white;
+    color: $white;
     background-color:#113442;
 }
 .li-item{
     text-decoration: none !important;
-    color:white;
+    color:$white;
 }
 
 .a-item:hover {
-    color: white;
+    color: $white;
 }
 
 .span-item {
@@ -50,7 +50,7 @@ a{
 }
 
 .bm-burger-bars {
-    background-color: $blue !important;
+    background-color: $white !important;
 }
 
 .line-style {
@@ -87,7 +87,7 @@ a{
     /* Stay on top */
     top: 0;
     left: 0;
-    background-color: #04222e !important;
+    background-color: $darkBlue !important;
     /* Black*/
     overflow-x: hidden;
     /* Disable horizontal scroll */
@@ -103,7 +103,7 @@ a{
 }
 
 .bm-item-list {
-    color: #ffffff !important;
+    color: $white !important;
     margin-left: 10%;
     
 
@@ -118,13 +118,13 @@ a{
 .bm-item-list>*>span {
     margin-left: 10px;
     font-weight: 700;
-    color: rgb(255, 255, 255, 0.767);
+    color: $white;
 }
 .dropdown-menu{
-    background-color: #052c3b !important;
+    background-color: $darkBlue !important;
 }
 .dropdown-item:hover{
-    background-color: #052c3b !important;
+    background-color: $darkBlue !important;
 }
 .text-nowrap{
     font-weight: 700 !important;

@@ -10,13 +10,13 @@
         <tbody>
             <tr :key="item.id" v-for="item in deals">
                 <th scope="row">
-                    <a v-bind:href="'deal/'+item.id" >
+                    <a v-bind:href="'deals/'+item.id">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a v-bind:href="'deal/'+item.id+'/create-action'" >
+                    <a v-bind:href="'deals/'+item.id+'/action/create'" >
                         <i class="fas fa-hammer"></i>
                     </a>
-                    <a v-bind:href="'deal/'+item.id+'/view-action'" >
+                    <a v-bind:href="'deals/'+item.id+'/action'" >
                         <i class="far fa-eye"></i>
                     </a>
                 </th>
@@ -38,7 +38,7 @@ export default {
     props: ["deals", "contacts"],
     data() {
         return {
-            fields: ['Date', 'Référence', 'Désignation', 'Contact', 'Dénomination_Social', 'Montant', 'ID_dropbox', 'origin'],
+            fields: ['Date', 'Référence', 'Company Name', 'Contact', 'Dénomination Social', 'Montant', 'ID Dropbox', 'Contact Origin'],
             
         }
     },

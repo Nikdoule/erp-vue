@@ -1,10 +1,17 @@
 .table-radius{
     box-shadow: 2px 0px 20px rgb(196, 196, 196);
     border-radius: 10px;
-    background-color: #ffff;
+    background-color: $white;
 }
 
 .topTilte{
-    width: 125px;
+    width: 0;
 }
 
+th{
+    border-top: none !important;
+}
+
+.heightPara{
+    height: 180px;
+}

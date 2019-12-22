@@ -7,8 +7,8 @@
     </thead>
     <tbody>
         <tr :key="item.id" v-for="item in param_todos">
-            <td>{{item.title}}</td>
-            <td>{{item.description}}</td>
+            <td class="heightPara">{{item.title}}</td>
+            <td class="heightPara">{{item.description}}</td>
         </tr>
     </tbody>
 </table>
@@ -20,8 +20,8 @@ export default {
     data() {
         return {
             fields: [
-                "To do",
-                "Déscription",
+                "To Do",
+                "Description",
             ],
         }
     },
