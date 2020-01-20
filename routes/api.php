@@ -18,22 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::prefix('1.0')->group(function () {
 
-    // Route::get('/ping', [
-    //     'uses' => '\App\Http\Controllers\Api\v1a\PingController@ping',
-    //     'as' => 'test.ping'
-    // ]);
-    
-    // Route::post('/projects/{id}/archive', [
-    //     'uses' => '\App\Http\Controllers\Api\v1a\ProjectController@setArchived',
-    //     'as' => 'projects.archive'
-    // ]);
-
-    // Route::get('/projects/{projectId}/tasks', [
-    //     'uses' => '\App\Http\Controllers\Api\v1a\TaskController@destroyByProject',
-    //     'as' => 'projects.tasks.destroy_by_project'
-    // ]);
-
-
     Route::apiResource('projects', 'Api\v1a\ProjectController');
     
     Route::apiResource('business-developpers', 'Api\v1a\BusinessDevelopperController');

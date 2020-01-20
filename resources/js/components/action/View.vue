@@ -9,6 +9,7 @@
     <tbody>
         <tr v-bind:class="[actions[actions.length-1].name == 'Terminer' ? 'coolGrenn' : actions[actions.length-1].name == 'Refuser' ?  'coolRed' : '']">
             <td>{{actions[actions.length-1].started_at}}</td>
+            <td>{{actions[actions.length-1].stopped_at}}</td>
             <td>{{deal.reference}}</td>
             <td>{{deal.designation}}</td>
             <td>{{deal.denomination}}</td>
@@ -25,7 +26,7 @@ export default {
     props: ["deal", "actions"],
     data() {
         return {
-            fields: ['Action Date', 'Référence', 'Désignation', 'Dénomination Social', 'Montant', 'ID_dropbox', 'Action'],
+            fields: ['Started At', 'Stopped At', 'Reference', 'Company Name', 'Denomination Social', 'Amount', 'ID_dropbox', 'Action'],
             
         }
     },

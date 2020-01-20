@@ -23,7 +23,7 @@
                 <td>{{item.created_at}}</td>
                 <td>{{item.reference}}</td>
                 <td>{{item.designation}}</td>
-                <td>{{contacts[item.contact_id-1].first_name}}</td>
+                <td>{{contacts[item.contact_id-1].first_name}} {{contacts[item.contact_id-1].last_name}}</td>
                 <td>{{item.denomination}}</td>
                 <td>{{item.amount}}</td>
                 <td>{{item.dropbox}}</td>
@@ -38,7 +38,7 @@ export default {
     props: ["deals", "contacts"],
     data() {
         return {
-            fields: ['Date', 'Référence', 'Company Name', 'Contact', 'Dénomination Social', 'Montant', 'ID Dropbox', 'Contact Origin'],
+            fields: ['Created At', 'Reference', 'Company Name', 'Contact', 'Denomination Social', 'Amount', 'ID Dropbox', 'Contact Origin'],
             
         }
     },

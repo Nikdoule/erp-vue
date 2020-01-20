@@ -1,17 +1,54 @@
+
+.table{
+    //width: 1854px !important;
+}
+.table-param{
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    width: 100%;
+}
+.table-param thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+.table-param th, .table-param td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
 .table-radius{
     box-shadow: 2px 0px 20px rgb(196, 196, 196);
     border-radius: 10px;
     background-color: $white;
+    //overflow: scroll;
+}
+.table-user{
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    width: 100%;
+}
+.table-user thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+.table-user th, .table-user td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
 }
 
-.topTilte{
+.top-title{
     width: 0;
 }
 
 th{
     border-top: none !important;
 }
-
-.heightPara{
+tr{
+    font-size: 0.8rem;
+}
+.height-param{
     height: 180px;
 }

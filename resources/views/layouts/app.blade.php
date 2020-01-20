@@ -12,6 +12,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet"> 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -57,7 +58,9 @@
                                     style="display: none;">
                                     @csrf
                                 </form>
-                                <a href="{{ route('admin.users.index')}}" class="dropdown-item text-white">Liste des utilisateurs</a>
+                                @can('manage-users')
+                                <a href="{{ route('admin.users.index')}}" class="dropdown-item text-white">Users list</a>
+                                @endcan
                             </div>
                         </li>
                         @endguest
@@ -85,6 +88,7 @@
             @yield('edit-deal')
             @yield('create-action')
             @yield('view-action')
+            @yield('403')
         </main>
     </div>
     <script src="https://kit.fontawesome.com/536fe6e8c5.js" crossorigin="anonymous"></script>

@@ -14,6 +14,5 @@
         <view-param-todo :param_todos="{{ $param_todos }}"></view-param-todo>
         </div>
     </div>
-
 </section>
 @endsection

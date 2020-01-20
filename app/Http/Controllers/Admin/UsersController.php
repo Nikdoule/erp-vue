@@ -86,8 +86,15 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
+
         $user->roles()->sync($request->roles);
 
+        $user->name = $request->name;
+
+        $user->email = $request->email;
+
+        $user->save();
+        
         return redirect()->route('admin.users.index');
     }
 
@@ -100,7 +107,7 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         if (Gate::denies('delete-users')) {
-            // The current user can't edit the post...
+            // The current user can't delete the post...
             return redirect()->route('admin.users.index');
         }
         $user->roles()->detach();

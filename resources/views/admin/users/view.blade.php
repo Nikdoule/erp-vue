@@ -7,7 +7,7 @@
             <div class="card mt-5">
                 <div class="card-header">Users list</div>
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table-user">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -24,14 +24,20 @@
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ implode(', ', $item->roles()->get()->pluck('name')->toArray()) }}</td>
-                                <td>
-                                    <a href="{{ route('admin.users.edit',$item->id) }}"><button class="btn btn-primary">Edit</button></a>
+                                
+                                <td class="d-flex">
+                                @can('edit-users')
+                                    <a class="mr-1" href="{{ route('admin.users.edit',$item->id) }}"><button class="btn btn-primary">Edit</button></a>
+                                @endcan
+                                    @can('delete-users')
                                     <form action="{{ route('admin.users.destroy',$item->id) }}" method="POST" class="d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-warning">Delete</button>
+                                    @endcan
                                     </form>
                                 </td>
+                                
                             </tr>
                             @endforeach
                         </tbody>

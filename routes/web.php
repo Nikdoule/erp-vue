@@ -11,7 +11,8 @@
 |
 */
 
-Route::middleware('auth')->group(function(){
+Route::middleware('auth')->middleware('can:view-users')->group(function(){
+
     //view
 
     Route::get('/', 'MonitoringController@index')->middleware('verified');
@@ -23,7 +24,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/deals/{dealId}/action/create', 'ActionController@store')->middleware('verified');
     
     //resources
-    Route::Resource('/business-developpers', 'BusinessDevlopperController')->middleware('verified');
+
+    Route::Resource('/business-developpers', 'BusinessDevlopperController')->middleware('can:manage-users');
     
     Route::Resource('/contacts', 'ContactController')->middleware('verified');
 
@@ -38,6 +40,7 @@ Route::middleware('auth')->group(function(){
     Route::Resource('/parameters', 'ParameterController');
 
     //auth
+    
     Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
         Route::resource('users', 'UsersController');
 

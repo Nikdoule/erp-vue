@@ -1,14 +1,14 @@
 <template>
-<table class="table">
+<table class="table-param">
     <thead>
         <tr>
-            <th class="topTilte" scope="col" :key="item.id" v-for="item in fields">{{ item }}</th>
+            <th class="top-title" scope="col" :key="item.id" v-for="item in fields">{{ item }}</th>
         </tr>
     </thead>
     <tbody>
         <tr :key="item.id" v-for="item in param_actions">
-            <td class="heightPara">{{item.title}}</td>
-            <td class="heightPara">{{item.description}}</td>
+            <td class="height-param">{{item.title}}</td>
+            <td class="height-param">{{item.description}}</td>
         </tr>
     </tbody>
 </table>

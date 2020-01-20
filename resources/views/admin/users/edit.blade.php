@@ -10,13 +10,39 @@
                 <form action="{{ route('admin.users.update', $user) }}" method="POST">
                     @csrf
                     @method('PATCH')
+                    <div class="form-group row">
+                        <label for="email" class="col-md-6 col-form-label">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-12">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email')  ?? $user->email}}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                    </div>
+                    <div class="form-group row">
+                            <label for="name" class="col-md-6 col-form-label">{{ __('Name') }}</label>
+    
+                                <div class="col-md-12">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $user->name }}" required autocomplete="name" autofocus>
+    
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                        </div>
                     @foreach ($roles as $item)
                         <div class="form-group form-check">
-                            <input type="checkbox" class="form-check-input" name="roles[]" value="{{ $item->id }}" id="{{ $item->id }}" @foreach ($user->roles as $itemRole) @if ($itemRole->id == $item->id) checked @endif @endforeach>
+                            <input type="checkbox" class="form-check-input" name="roles[]" value="{{ $item->id }}" id="{{ $item->id }}" @if ($user->roles->pluck('id')->contains($item->id)) checked @endif>
                             <label for="{{ $item->id }}" class="form-check-label">{{ $item->name }}</label>
                         </div>
                     @endforeach
-                    <button type="submit" class="btn btn-primary">Change roles</button>
+                    <button type="submit" class="btn btn-primary">Change information</button>
                 </form>
                 </div>
             </div>
