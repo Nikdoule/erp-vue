@@ -1,3 +1,1 @@
-"# erp-vue" 
-"# erp-vue" 
-"# crmv2" 
+# Installation du projet NégoPricing
