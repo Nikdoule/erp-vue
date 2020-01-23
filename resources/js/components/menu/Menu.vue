@@ -105,7 +105,7 @@
 <script>
 import {
     Slide
-} from 'vue-burger-menu'
+} from '../vue-burger-menu'
 
 export default {
     components: {
