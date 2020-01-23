@@ -8,10 +8,13 @@ Dans un terminal, installer composer sur votre machine via la commande ci-dessou
 - ``` composer install ```
 ### Configuration du projet:
 Créer un fichier ```.env``` à la racine du projet.
->Contenu du fichier ici: https://github.com/laravel/laravel/blob/master/.env.example
+>Contenu du fichier ici: https://github.com/laravel/laravel.com-next/blob/master/.env.example
 ##### Générer la clé de chiffrement du projet:
 Dans un terminal, générer la clé secrete de votre projet via la commande ci-dessous.
 - ```php artisan key:generate```
+##### Migrations
+Dans un terminal, exécutez les migrations via la commande ci-dessous.
+- ```php artisan migrate```
 ##### Création des utilisateurs par défaut:
 Le projet est muni par défaut de deux utilisateurs, un administrateur et un manager. Il serait utile de les générer pour une première utilisation de l'application. Pour ce faire, dans un terminal via la commande ci-dessous.
 - ``` php artisan db:seed ```
