@@ -19,12 +19,12 @@ class UsersTableSeeder extends Seeder
         DB::table('role_user')->truncate();
 
         $admin = User::create([
-            'name' => 'administrador',
+            'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => Hash::make('123456789')
         ]);
         $manager = User::create([
-            'name' => 'copin',
+            'name' => 'Manager',
             'email' => 'manager@manager.com',
             'password' => Hash::make('123456789')
         ]);
