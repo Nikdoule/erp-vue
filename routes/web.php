@@ -11,31 +11,31 @@
 |
 */
 
-Route::middleware('auth')->middleware('can:view-users')->group(function(){
+Route::middleware('auth')->middleware('can:view-users','verified')->group(function(){
 
     //view
 
-    Route::get('/', 'MonitoringController@index')->middleware('verified');
+    Route::get('/', 'MonitoringController@index');
 
-    Route::get('/deals/{dealId}/action', 'ActionController@show')->middleware('verified');
+    Route::get('/deals/{dealId}/action', 'ActionController@show');
 
     //create
     
-    Route::get('/deals/{dealId}/action/create', 'ActionController@store')->middleware('verified');
+    Route::get('/deals/{dealId}/action/create', 'ActionController@store');
     
     //resources
 
     Route::Resource('/business-developpers', 'BusinessDevlopperController')->middleware('can:manage-users');
     
-    Route::Resource('/contacts', 'ContactController')->middleware('verified');
+    Route::Resource('/contacts', 'ContactController');
 
-    Route::Resource('/deals', 'DealController')->middleware('verified');
+    Route::Resource('/deals', 'DealController');
 
-    Route::Resource('/action-parameter', 'ParamActionController')->middleware('verified');
+    Route::Resource('/action-parameter', 'ParamActionController');
 
-    Route::Resource('/contact-parameter', 'ParamContactController')->middleware('verified');
+    Route::Resource('/contact-parameter', 'ParamContactController');
     
-    Route::Resource('/todo-parameter', 'ParamTodoController')->middleware('verified');
+    Route::Resource('/todo-parameter', 'ParamTodoController');
 
     Route::Resource('/parameters', 'ParameterController');
 
