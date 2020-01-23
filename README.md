@@ -13,7 +13,7 @@ Créer un fichier ```.env``` à la racine du projet.
 Dans un terminal, générer la clé secrete de votre projet via la commande ci-dessous.
 - ```php artisan key:generate```
 ### Développement du projet
-Dans un terminal, afin de continuer le développement du projet, il est important d'intaller le gestionnaire de paquets NPM via la commande ci-dessous.
+Dans un terminal, afin de continuer le développement du projet, il est important d'installer le gestionnaire de paquets NPM via la commande ci-dessous.
 - ``` npm install ```
 >Consulter la documentation Laravel pour avoir la liste des commandes utiles de NPM: https://laravel.com/docs/6.x/mix
 
