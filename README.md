@@ -17,8 +17,8 @@ Le projet est muni par défaut de deux utilisateurs, un administrateur et un man
 - ``` php artisan db:seed ```
 - Les informations confidentielles des utilisateurs sont dans le dossier ```database/seeds/UsersTableSeeder``` 
 - Il est maintenant possible de vous connecter en tant qu'administrateur
-- pour modifier un utilisateur cliquez sur votre profil et accéder à la liste des utilisateurs
->voir la partie Simulation d'envoie d'email avant d'utiliser l'application. Documentation Laravel à ce sujet: https://laravel.com/docs/5.8/seeding.
+- pour modifier un utilisateur, cliquez sur votre profil et accéder à la liste des utilisateurs
+>voir la partie Simulation d'envoie d'email avant d'utiliser l'application. Documentation Laravel à ce sujet du seeding: https://laravel.com/docs/5.8/seeding.
 ##### Simulation d'envoie d'email avec mailtrap.io
 La validation de nouveaux comptes et la modification des mots de passe se fait via le clic d'un lien envoyé par email.
 Voici le processus:
