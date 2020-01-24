@@ -12,7 +12,7 @@ Créer un fichier ```.env``` à la racine du projet.
 ##### Générer la clé de chiffrement du projet:
 Dans un terminal, générer la clé secrete de votre projet via la commande ci-dessous.
 - ```php artisan key:generate```
-##### Migrations
+##### Migrations:
 Dans un terminal, exécutez les migrations via la commande ci-dessous.
 - ```php artisan migrate```
 ##### Création des utilisateurs par défaut:
