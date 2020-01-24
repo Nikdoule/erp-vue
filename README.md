@@ -2,7 +2,6 @@
 ```diff
 - L'utilisation de Github est recommandé pour l'installation de ce projet.
 ```
-
 ### Installation du projet :
 Dans un terminal, cloner le répertoire github sur votre machine via la commande ci-dessous.
 - ``` git clone https://github.com/Nikdoule/erp-vue.git ```
@@ -39,5 +38,8 @@ Voici le processus:
 Dans un terminal, afin de continuer le développement du projet, il est important d'installer le gestionnaire de paquets NPM via la commande ci-dessous.
 - ``` npm install ```
 >Consulter la documentation Laravel pour avoir la liste des commandes utiles de NPM: https://laravel.com/docs/6.x/mix
+```diff
++Enjoy
+```
 
 
