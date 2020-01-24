@@ -1,5 +1,8 @@
 # Projet NégoSi
-L'utilisation de Github est recommandé pour l'installation de ce projet.
+```diff
+- L'utilisation de Github est recommandé pour l'installation de ce projet.
+```
+
 ### Installation du projet :
 Dans un terminal, cloner le répertoire github sur votre machine via la commande ci-dessous.
 - ``` git clone https://github.com/Nikdoule/erp-vue.git ```
